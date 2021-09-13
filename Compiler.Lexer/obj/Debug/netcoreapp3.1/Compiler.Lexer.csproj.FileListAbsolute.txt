@@ -1,0 +1,10 @@
+C:\Users\carlo\Github\Compiler\Compiler.Lexer\bin\Debug\netcoreapp3.1\Compiler.Lexer.deps.json
+C:\Users\carlo\Github\Compiler\Compiler.Lexer\bin\Debug\netcoreapp3.1\Compiler.Lexer.dll
+C:\Users\carlo\Github\Compiler\Compiler.Lexer\bin\Debug\netcoreapp3.1\Compiler.Lexer.pdb
+C:\Users\carlo\Github\Compiler\Compiler.Lexer\obj\Debug\netcoreapp3.1\Compiler.Lexer.csproj.AssemblyReference.cache
+C:\Users\carlo\Github\Compiler\Compiler.Lexer\obj\Debug\netcoreapp3.1\Compiler.Lexer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\carlo\Github\Compiler\Compiler.Lexer\obj\Debug\netcoreapp3.1\Compiler.Lexer.AssemblyInfoInputs.cache
+C:\Users\carlo\Github\Compiler\Compiler.Lexer\obj\Debug\netcoreapp3.1\Compiler.Lexer.AssemblyInfo.cs
+C:\Users\carlo\Github\Compiler\Compiler.Lexer\obj\Debug\netcoreapp3.1\Compiler.Lexer.csproj.CoreCompileInputs.cache
+C:\Users\carlo\Github\Compiler\Compiler.Lexer\obj\Debug\netcoreapp3.1\Compiler.Lexer.dll
+C:\Users\carlo\Github\Compiler\Compiler.Lexer\obj\Debug\netcoreapp3.1\Compiler.Lexer.pdb

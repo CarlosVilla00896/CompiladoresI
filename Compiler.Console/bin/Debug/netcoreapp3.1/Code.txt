@@ -1,0 +1,26 @@
+﻿+*
+( )
+;
+=
+/
+/* hola loco como estas **/
+*
+<
+<= <>
+
+>      >=
+int a =  6 + 4;
+int b = 6;
+
+if( a > b)
+
+a = "Hola como esta";
+while( (a != 5) || c > b){
+    int [] c = b;
+}
+
+int Suma ( int a, int b)
+{        
+   	return a + b;
+}
+
