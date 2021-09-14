@@ -20,8 +20,18 @@ namespace Compiler.Lexer
                 { "else", TokenType.ElseKeyword },
                 { "int", TokenType.IntKeyword },
                 { "float", TokenType.FloatKeyword },
+                { "bool", TokenType.BoolKeyword },
+                { "DateTime", TokenType.DateTimeKeyword },
                 { "return", TokenType.ReturnKeyword },
                 { "while", TokenType.WhileKeyword },
+                { "for", TokenType.ForKeyword },
+                { "foreach", TokenType.ForeachKeyword },
+                { "class", TokenType.ClassKeyword },
+                { "true", TokenType.TrueKeyword },
+                { "false", TokenType.FalseKeyword },
+                { "Console", TokenType.ConsoleKeyword },
+                { "WriteLine", TokenType.WriteLineKeyword},
+                { "ReadLine", TokenType.ReadLineKeyword},
             };
 
             this.symbolsTable = new List<Symbol>();
@@ -192,30 +202,71 @@ namespace Compiler.Lexer
                         }
 
                     case '+':
-                        lexeme.Append(currentChar);
-                        return new Token
-                        {
-                            TokenType = TokenType.Plus,
-                            Column = input.Position.Column,
-                            Line = input.Position.Line,
-                            Lexeme = lexeme.ToString()
-                        };
+                            {
+                                lexeme.Append(currentChar);
+                                var nextChar = PeekNextChar();
+                                if(nextChar == '+')
+                                {
+                                    lexeme.Append(nextChar);
+                                    GetNextChar();
+                                    return new Token
+                                    {
+                                        TokenType = TokenType.Increase,
+                                        Column = input.Position.Column,
+                                        Line = input.Position.Line,
+                                        Lexeme = lexeme.ToString()
+                                    };
+                                }
+                                return new Token
+                                {
+                                    TokenType = TokenType.Plus,
+                                    Column = input.Position.Column,
+                                    Line = input.Position.Line,
+                                    Lexeme = lexeme.ToString()
+                                };
+                            }
 
                     case '-':
-                        lexeme.Append(currentChar);
-                        return new Token
-                        {
-                            TokenType = TokenType.Minus,
-                            Column = input.Position.Column,
-                            Line = input.Position.Line,
-                            Lexeme = lexeme.ToString()
-                        };
+                            {
+                                lexeme.Append(currentChar);
+                                var nextChar = PeekNextChar();
+                                if (nextChar == '-')
+                                {
+                                    lexeme.Append(nextChar);
+                                    GetNextChar();
+                                    return new Token
+                                    {
+                                        TokenType = TokenType.Decrease,
+                                        Column = input.Position.Column,
+                                        Line = input.Position.Line,
+                                        Lexeme = lexeme.ToString()
+                                    };
+                                }
 
-                    case '*':
+                                return new Token
+                                {
+                                    TokenType = TokenType.Minus,
+                                    Column = input.Position.Column,
+                                    Line = input.Position.Line,
+                                    Lexeme = lexeme.ToString()
+                                };
+                            }
+
+                        case '*':
                         lexeme.Append(currentChar);
                         return new Token
                         {
                             TokenType = TokenType.Asterisk,
+                            Column = input.Position.Column,
+                            Line = input.Position.Line,
+                            Lexeme = lexeme.ToString()
+                        };
+
+                     case '%':
+                        lexeme.Append(currentChar);
+                        return new Token
+                        {
+                            TokenType = TokenType.Mod,
                             Column = input.Position.Column,
                             Line = input.Position.Line,
                             Lexeme = lexeme.ToString()
@@ -250,15 +301,32 @@ namespace Compiler.Lexer
                             Line = input.Position.Line,
                             Lexeme = lexeme.ToString()
                         };
+
                     case '=':
-                        lexeme.Append(currentChar);
-                        return new Token
-                        {
-                            TokenType = TokenType.Equal,
-                            Column = input.Position.Column,
-                            Line = input.Position.Line,
-                            Lexeme = lexeme.ToString()
-                        };
+                            {
+                                lexeme.Append(currentChar);
+                                var nextChar = PeekNextChar();
+                                if (nextChar == '=')
+                                {
+                                    lexeme.Append(currentChar);
+                                    GetNextChar();
+                                    return new Token
+                                    {
+                                        TokenType = TokenType.RelationalEqual,
+                                        Column = input.Position.Column,
+                                        Line = input.Position.Line,
+                                        Lexeme = lexeme.ToString().Trim()
+                                    };
+                                }
+                                return new Token
+                                {
+                                    TokenType = TokenType.Equal,
+                                    Column = input.Position.Column,
+                                    Line = input.Position.Line,
+                                    Lexeme = lexeme.ToString()
+                                };
+                            }
+                        
                     case ':':
                         lexeme.Append(currentChar);
                         return new Token
@@ -355,6 +423,16 @@ namespace Compiler.Lexer
                             return new Token
                             {
                                 TokenType = TokenType.LogicalOr,
+                                Column = input.Position.Column,
+                                Line = input.Position.Line,
+                                Lexeme = lexeme.ToString()
+                            };
+
+                        case '.':
+                            lexeme.Append(currentChar);
+                            return new Token
+                            {
+                                TokenType = TokenType.Point,
                                 Column = input.Position.Column,
                                 Line = input.Position.Line,
                                 Lexeme = lexeme.ToString()

@@ -1,26 +1,23 @@
-﻿+*
-( )
-;
-=
-/
-/* hola loco como estas **/
-*
-<
-<= <>
+﻿class main{
 
->      >=
-int a =  6 + 4;
-int b = 6;
+	int a =  6 + 4;
+    int b = 6;
+    /* hola loco como estas **/
 
-if( a > b)
+    if( a == b){
+        Console.WriteLine("hola");    
+    }
+    int c = b++;
+    c = c--;
+    a = "Hola como esta";
+    while( (a != 5) || c > b){
+        int [] c;
+    }
 
-a = "Hola como esta";
-while( (a != 5) || c > b){
-    int [] c = b;
+    int Suma ( int a, int b)
+    {        
+   	    return a + b;
+    }
 }
 
-int Suma ( int a, int b)
-{        
-   	return a + b;
-}
 

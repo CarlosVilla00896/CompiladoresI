@@ -22,6 +22,7 @@ namespace Compiler.Lexer.Tokens
         SemiColon,
         Colon,
         Equal,
+        RelationalEqual,
         LessThan,
         LessOrEqualThan,
         NotEqual,
@@ -42,6 +43,7 @@ namespace Compiler.Lexer.Tokens
         DateTimeKeyword,
         ForKeyword,
         WhileKeyword,
+        ForeachKeyword,
         ReturnKeyword,
         ConsoleKeyword,
         WriteLineKeyword,
@@ -50,6 +52,8 @@ namespace Compiler.Lexer.Tokens
         Constant,
         FloatConstant,
         StringLiteral,
+        Increase,
+        Decrease,
         EOF
     }
 }
