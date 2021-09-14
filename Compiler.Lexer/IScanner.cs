@@ -5,7 +5,7 @@ using Compiler.Lexer.Tokens;
 
 namespace Compiler.Lexer
 {
-    interface IScanner
+    public interface IScanner
     {
         Token GetNextToken();
     }
