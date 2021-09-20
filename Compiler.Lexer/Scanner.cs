@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Compiler.Lexer
 {
-    public class Scanner
+    public class Scanner : IScanner
     {
         private Input input;
         private readonly Dictionary<string, TokenType> keywords;
@@ -32,6 +32,9 @@ namespace Compiler.Lexer
                 { "Console", TokenType.ConsoleKeyword },
                 { "WriteLine", TokenType.WriteLineKeyword},
                 { "ReadLine", TokenType.ReadLineKeyword},
+                { "in", TokenType.ReadLineKeyword},
+                { "type", TokenType.TypeKeyWord},
+                { "new", TokenType.NewKeyword },
             };
 
             this.symbolsTable = new List<Symbol>();
@@ -409,24 +412,40 @@ namespace Compiler.Lexer
                             };
 
                           case '&':
-                            lexeme.Append(currentChar);
-                            return new Token
                             {
-                                TokenType = TokenType.LogicalAnd,
-                                Column = input.Position.Column,
-                                Line = input.Position.Line,
-                                Lexeme = lexeme.ToString()
-                            };
+                                lexeme.Append(currentChar);
+                                var nextChar = PeekNextChar();
+                                if (nextChar == '&')
+                                {
+                                    GetNextChar();
+                                    return new Token
+                                    {
+                                        TokenType = TokenType.LogicalAnd,
+                                        Column = input.Position.Column,
+                                        Line = input.Position.Line,
+                                        Lexeme = lexeme.ToString()
+                                    };
+                                }
+                            }
+                            break;
 
                         case '|':
-                            lexeme.Append(currentChar);
-                            return new Token
                             {
-                                TokenType = TokenType.LogicalOr,
-                                Column = input.Position.Column,
-                                Line = input.Position.Line,
-                                Lexeme = lexeme.ToString()
-                            };
+                                lexeme.Append(currentChar);
+                                var nextChar = PeekNextChar();
+                                if (nextChar == '|')
+                                {
+                                    GetNextChar();
+                                    return new Token
+                                    {
+                                        TokenType = TokenType.LogicalOr,
+                                        Column = input.Position.Column,
+                                        Line = input.Position.Line,
+                                        Lexeme = lexeme.ToString()
+                                    };
+                                }
+                            }
+                            break;
 
                         case '.':
                             lexeme.Append(currentChar);

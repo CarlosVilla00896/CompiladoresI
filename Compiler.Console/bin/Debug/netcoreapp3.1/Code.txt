@@ -1,22 +1,70 @@
-﻿class main{
-
+﻿class Main{
+    
+    DateTime date = new DateTime(2021, 10, 25);
 	int a =  6 + 4;
     int b = 6;
+    int x = a - b;
+    
+    int c = b;
+    int c[] = new int [6];
+    c[1] = 45;
+
+    /* float x = 7.45; */
+
     /* hola loco como estas **/
 
-    if( a == b){
+    if( a == true){
         Console.WriteLine("hola");    
+    } else {
+        Console.WriteLine("No hola");
     }
-    int c = b++;
-    c = c--;
+
+    c = ++c;
     a = "Hola como esta";
-    while( (a != 5) || c > b){
-        int [] c;
+
+
+    while( (a != 5) || (c > b) ){
+        if(a>b){
+            Console.WriteLine("Es Mayor");
+        }else{
+            Console.WriteLine("Es Menor");
+        }
     }
 
     int Suma ( int a, int b)
     {        
    	    return a + b;
+    }
+
+     /* c = Suma( 4, 5 ); */
+
+    int Fibonacci(int a, int b, int counter, int len)  
+    {  
+        if (counter <= len)  
+        {  
+            Console.WriteLine("{0} ");  
+            Fibonacci(b, a + b, counter+1, len);  
+        }
+        else if( c!= a)
+        {
+            int z = y;
+        }
+        else{
+            return a;
+        }
+    } 
+    
+    float Factorial(){
+        int i; int number; float fact;
+        Console.WriteLine("Enter the Number");
+        /* number = Console.ReadLine(); */
+        fact = number;
+        for (int i = number - 1; i >= 1; --i)
+        {
+            fact = fact * i;
+        }
+        Console.WriteLine("\nFactorial of Given Number is: " + fact);
+        Console.ReadLine();
     }
 }
 

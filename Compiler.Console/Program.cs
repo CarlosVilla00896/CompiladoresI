@@ -1,5 +1,6 @@
 ﻿using Compiler.Lexer;
 using Compiler.Lexer.Tokens;
+using Compiler.Parser;
 using System;
 using System.IO;
 
@@ -12,12 +13,15 @@ namespace Compiler.Console
             var code = File.ReadAllText("Code.txt").Replace(Environment.NewLine, "\n");
             var input = new Input(code);
             var scanner = new Scanner(input);
-            Token token;
-            do
-            {
-                token = scanner.GetNextToken();
-                System.Console.WriteLine(token.ToString());
-            } while (token.TokenType != TokenType.EOF);
+            var parser = new Parser.Parser(scanner);
+            parser.Parse();
+            System.Console.WriteLine("Success!!");
+            //Token token;
+            //do
+            //{
+            //    token = scanner.GetNextToken();
+            //    System.Console.WriteLine(token.ToString());
+            //} while (token.TokenType != TokenType.EOF);
         }
     }
 }

@@ -11,6 +11,19 @@
         "runtime": {
           "bin/placeholder/Compiler.Lexer.dll": {}
         }
+      },
+      "Compiler.Parser/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "Compiler.Lexer": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Compiler.Parser.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Compiler.Parser.dll": {}
+        }
       }
     }
   },
@@ -19,11 +32,17 @@
       "type": "project",
       "path": "../Compiler.Lexer/Compiler.Lexer.csproj",
       "msbuildProject": "../Compiler.Lexer/Compiler.Lexer.csproj"
+    },
+    "Compiler.Parser/1.0.0": {
+      "type": "project",
+      "path": "../Compiler.Parser/Compiler.Parser.csproj",
+      "msbuildProject": "../Compiler.Parser/Compiler.Parser.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "Compiler.Lexer >= 1.0.0"
+      "Compiler.Lexer >= 1.0.0",
+      "Compiler.Parser >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -55,6 +74,9 @@
           "projectReferences": {
             "C:\\Users\\carlo\\Github\\Compiler\\Compiler.Lexer\\Compiler.Lexer.csproj": {
               "projectPath": "C:\\Users\\carlo\\Github\\Compiler\\Compiler.Lexer\\Compiler.Lexer.csproj"
+            },
+            "C:\\Users\\carlo\\Github\\Compiler\\Compiler.Parser\\Compiler.Parser.csproj": {
+              "projectPath": "C:\\Users\\carlo\\Github\\Compiler\\Compiler.Parser\\Compiler.Parser.csproj"
             }
           }
         }

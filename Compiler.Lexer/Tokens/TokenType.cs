@@ -6,6 +6,7 @@ namespace Compiler.Lexer.Tokens
 {
     public enum TokenType
     {
+        //one or two 
         Plus,
         Minus,
         Asterisk,
@@ -45,9 +46,12 @@ namespace Compiler.Lexer.Tokens
         WhileKeyword,
         ForeachKeyword,
         ReturnKeyword,
+        TypeKeyWord,
+        NewKeyword,
         ConsoleKeyword,
         WriteLineKeyword,
         ReadLineKeyword,
+        InKeyword,
         Identifier,
         Constant,
         FloatConstant,
