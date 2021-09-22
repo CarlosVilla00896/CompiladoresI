@@ -1,0 +1,13 @@
+C:\Users\carlo\Github\Compiler\Compiler.Core\bin\Debug\netcoreapp3.1\Compiler.Core.deps.json
+C:\Users\carlo\Github\Compiler\Compiler.Core\bin\Debug\netcoreapp3.1\Compiler.Core.dll
+C:\Users\carlo\Github\Compiler\Compiler.Core\bin\Debug\netcoreapp3.1\Compiler.Core.pdb
+C:\Users\carlo\Github\Compiler\Compiler.Core\bin\Debug\netcoreapp3.1\Compiler.Lexer.dll
+C:\Users\carlo\Github\Compiler\Compiler.Core\bin\Debug\netcoreapp3.1\Compiler.Lexer.pdb
+C:\Users\carlo\Github\Compiler\Compiler.Core\obj\Debug\netcoreapp3.1\Compiler.Core.csproj.AssemblyReference.cache
+C:\Users\carlo\Github\Compiler\Compiler.Core\obj\Debug\netcoreapp3.1\Compiler.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\carlo\Github\Compiler\Compiler.Core\obj\Debug\netcoreapp3.1\Compiler.Core.AssemblyInfoInputs.cache
+C:\Users\carlo\Github\Compiler\Compiler.Core\obj\Debug\netcoreapp3.1\Compiler.Core.AssemblyInfo.cs
+C:\Users\carlo\Github\Compiler\Compiler.Core\obj\Debug\netcoreapp3.1\Compiler.Core.csproj.CoreCompileInputs.cache
+C:\Users\carlo\Github\Compiler\Compiler.Core\obj\Debug\netcoreapp3.1\Compiler.Core.csproj.CopyComplete
+C:\Users\carlo\Github\Compiler\Compiler.Core\obj\Debug\netcoreapp3.1\Compiler.Core.dll
+C:\Users\carlo\Github\Compiler\Compiler.Core\obj\Debug\netcoreapp3.1\Compiler.Core.pdb

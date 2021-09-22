@@ -8,10 +8,19 @@
     ".NETCoreApp,Version=v3.1": {
       "Compiler.Parser/1.0.0": {
         "dependencies": {
+          "Compiler.Core": "1.0.0",
           "Compiler.Lexer": "1.0.0"
         },
         "runtime": {
           "Compiler.Parser.dll": {}
+        }
+      },
+      "Compiler.Core/1.0.0": {
+        "dependencies": {
+          "Compiler.Lexer": "1.0.0"
+        },
+        "runtime": {
+          "Compiler.Core.dll": {}
         }
       },
       "Compiler.Lexer/1.0.0": {
@@ -23,6 +32,11 @@
   },
   "libraries": {
     "Compiler.Parser/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Compiler.Core/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

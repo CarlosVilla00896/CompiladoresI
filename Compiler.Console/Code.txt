@@ -31,13 +31,6 @@
         }
     }
 
-    int Suma ( int a, int b)
-    {        
-   	    return a + b;
-    }
-
-     /* c = Suma( 4, 5 ); */
-
     int Fibonacci(int a, int b, int counter, int len)  
     {  
         if (counter <= len)  
@@ -53,19 +46,10 @@
             return a;
         }
     } 
+
+
     
-    float Factorial(){
-        int i; int number; float fact;
-        Console.WriteLine("Enter the Number");
-        /* number = Console.ReadLine(); */
-        fact = number;
-        for (int i = number - 1; i >= 1; --i)
-        {
-            fact = fact * i;
-        }
-        Console.WriteLine("\nFactorial of Given Number is: " + fact);
-        Console.ReadLine();
-    }
+    
 }
 
 

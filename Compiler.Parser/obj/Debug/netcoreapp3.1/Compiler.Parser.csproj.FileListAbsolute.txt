@@ -11,3 +11,5 @@ C:\Users\carlo\Github\Compiler\Compiler.Parser\obj\Debug\netcoreapp3.1\Compiler.
 C:\Users\carlo\Github\Compiler\Compiler.Parser\obj\Debug\netcoreapp3.1\Compiler.Parser.csproj.CopyComplete
 C:\Users\carlo\Github\Compiler\Compiler.Parser\obj\Debug\netcoreapp3.1\Compiler.Parser.dll
 C:\Users\carlo\Github\Compiler\Compiler.Parser\obj\Debug\netcoreapp3.1\Compiler.Parser.pdb
+C:\Users\carlo\Github\Compiler\Compiler.Parser\bin\Debug\netcoreapp3.1\Compiler.Core.dll
+C:\Users\carlo\Github\Compiler\Compiler.Parser\bin\Debug\netcoreapp3.1\Compiler.Core.pdb

@@ -18,3 +18,5 @@ C:\Users\carlo\Github\Compiler\Compiler.Console\obj\Debug\netcoreapp3.1\Compiler
 C:\Users\carlo\Github\Compiler\Compiler.Console\bin\Debug\netcoreapp3.1\Code.txt
 C:\Users\carlo\Github\Compiler\Compiler.Console\bin\Debug\netcoreapp3.1\Compiler.Parser.dll
 C:\Users\carlo\Github\Compiler\Compiler.Console\bin\Debug\netcoreapp3.1\Compiler.Parser.pdb
+C:\Users\carlo\Github\Compiler\Compiler.Console\bin\Debug\netcoreapp3.1\Compiler.Core.dll
+C:\Users\carlo\Github\Compiler\Compiler.Console\bin\Debug\netcoreapp3.1\Compiler.Core.pdb

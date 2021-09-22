@@ -2,6 +2,19 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.1": {
+      "Compiler.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "Compiler.Lexer": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Compiler.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Compiler.Core.dll": {}
+        }
+      },
       "Compiler.Lexer/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
@@ -15,6 +28,11 @@
     }
   },
   "libraries": {
+    "Compiler.Core/1.0.0": {
+      "type": "project",
+      "path": "../Compiler.Core/Compiler.Core.csproj",
+      "msbuildProject": "../Compiler.Core/Compiler.Core.csproj"
+    },
     "Compiler.Lexer/1.0.0": {
       "type": "project",
       "path": "../Compiler.Lexer/Compiler.Lexer.csproj",
@@ -23,6 +41,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "Compiler.Core >= 1.0.0",
       "Compiler.Lexer >= 1.0.0"
     ]
   },
@@ -53,6 +72,9 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
+            "C:\\Users\\carlo\\Github\\Compiler\\Compiler.Core\\Compiler.Core.csproj": {
+              "projectPath": "C:\\Users\\carlo\\Github\\Compiler\\Compiler.Core\\Compiler.Core.csproj"
+            },
             "C:\\Users\\carlo\\Github\\Compiler\\Compiler.Lexer\\Compiler.Lexer.csproj": {
               "projectPath": "C:\\Users\\carlo\\Github\\Compiler\\Compiler.Lexer\\Compiler.Lexer.csproj"
             }

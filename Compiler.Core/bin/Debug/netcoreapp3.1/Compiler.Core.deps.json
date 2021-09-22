@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "Compiler.Core/1.0.0": {
+        "dependencies": {
+          "Compiler.Lexer": "1.0.0"
+        },
+        "runtime": {
+          "Compiler.Core.dll": {}
+        }
+      },
+      "Compiler.Lexer/1.0.0": {
+        "runtime": {
+          "Compiler.Lexer.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Compiler.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Compiler.Lexer/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

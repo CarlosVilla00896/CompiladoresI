@@ -1,0 +1,3 @@
+is_global = true
+build_property.RootNamespace = Compiler.AbstractSyntaxTree
+build_property.ProjectDir = C:\Users\carlo\Github\Compiler\Compiler.AbstractSyntaxTree\

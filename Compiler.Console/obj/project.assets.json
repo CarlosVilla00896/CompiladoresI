@@ -2,6 +2,19 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.1": {
+      "Compiler.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "Compiler.Lexer": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Compiler.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Compiler.Core.dll": {}
+        }
+      },
       "Compiler.Lexer/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
@@ -16,6 +29,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
+          "Compiler.Core": "1.0.0",
           "Compiler.Lexer": "1.0.0"
         },
         "compile": {
@@ -28,6 +42,11 @@
     }
   },
   "libraries": {
+    "Compiler.Core/1.0.0": {
+      "type": "project",
+      "path": "../Compiler.Core/Compiler.Core.csproj",
+      "msbuildProject": "../Compiler.Core/Compiler.Core.csproj"
+    },
     "Compiler.Lexer/1.0.0": {
       "type": "project",
       "path": "../Compiler.Lexer/Compiler.Lexer.csproj",
