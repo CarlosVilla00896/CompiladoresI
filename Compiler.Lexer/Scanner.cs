@@ -9,7 +9,6 @@ namespace Compiler.Lexer
     {
         private Input input;
         private readonly Dictionary<string, TokenType> keywords;
-        private readonly List<Symbol> symbolsTable;
         public Scanner(Input input)
         {
             this.input = input;
@@ -36,8 +35,6 @@ namespace Compiler.Lexer
                 { "type", TokenType.TypeKeyWord},
                 { "new", TokenType.NewKeyword },
             };
-
-            this.symbolsTable = new List<Symbol>();
         }
         public Token GetNextToken()
         {
@@ -74,14 +71,12 @@ namespace Compiler.Lexer
                         };
                     }
 
-                    this.symbolsTable.Add(new Symbol(lexeme.ToString(), SymbolType.Identifier));
                     return new Token
                     {
                         TokenType = TokenType.Identifier,
                         Column = input.Position.Column,
                         Line = input.Position.Line,
                         Lexeme = lexeme.ToString(),
-                        PositionInSymbolTable = this.symbolsTable.Count - 1
                     };
                 }
                 else if (char.IsDigit(currentChar))
@@ -90,20 +85,39 @@ namespace Compiler.Lexer
                     currentChar = PeekNextChar();
                     while (char.IsDigit(currentChar))
                     {
-                        //currentChar = GetNextChar(); //Descomentar en caso de error
-                        GetNextChar();
+                        currentChar = GetNextChar();
                         lexeme.Append(currentChar);
                         currentChar = PeekNextChar();
                     }
-                    this.symbolsTable.Add(new Symbol(lexeme.ToString(), SymbolType.Constant));
+
+                    if (currentChar != '.')
+                    {
+                        return new Token
+                        {
+                            TokenType = TokenType.IntConstant,
+                            Column = input.Position.Column,
+                            Line = input.Position.Line,
+                            Lexeme = lexeme.ToString(),
+                        };
+                    }
+
+                    currentChar = GetNextChar();
+                    lexeme.Append(currentChar);
+                    currentChar = PeekNextChar();
+                    while (char.IsDigit(currentChar))
+                    {
+                        currentChar = GetNextChar();
+                        lexeme.Append(currentChar);
+                        currentChar = PeekNextChar();
+                    }
                     return new Token
                     {
-                        TokenType = TokenType.Constant,
+                        TokenType = TokenType.FloatConstant,
                         Column = input.Position.Column,
                         Line = input.Position.Line,
                         Lexeme = lexeme.ToString(),
-                        PositionInSymbolTable = this.symbolsTable.Count - 1
                     };
+
                 }
                 else switch (currentChar)
                 {
@@ -350,14 +364,12 @@ namespace Compiler.Lexer
                                     currentChar =  GetNextChar();
                                 }
                                 lexeme.Append(currentChar);
-                                this.symbolsTable.Add(new Symbol(lexeme.ToString(), SymbolType.Literal));
                                 return new Token
                                 {
                                     TokenType = TokenType.StringLiteral,
                                     Column = input.Position.Column,
                                     Line = input.Position.Line,
                                     Lexeme = lexeme.ToString(),
-                                    PositionInSymbolTable = this.symbolsTable.Count - 1
                                 };
                             }
 

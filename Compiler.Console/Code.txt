@@ -30,8 +30,8 @@
             Console.WriteLine("Es Menor");
         }
     }
-
-    int Fibonacci(int a, int b, int counter, int len)  
+    suma();
+    int Fibonacci()  
     {  
         if (counter <= len)  
         {  

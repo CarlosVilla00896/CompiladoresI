@@ -7,9 +7,9 @@ namespace Compiler.Core.Expressions
 {
     public class BinaryOperator : Expression
     {
-        public Expression LeftExpression { get; }
-        public Expression RightExpression { get; }
-        public BinaryOperator(Token token, Expression leftExpression, Expression rightExpression, Type type) 
+        public TypedExpression LeftExpression { get; }
+        public TypedExpression RightExpression { get; }
+        public BinaryOperator(Token token, TypedExpression leftExpression, TypedExpression rightExpression, Type type) 
             : base(token, type)
         {
             LeftExpression = leftExpression;

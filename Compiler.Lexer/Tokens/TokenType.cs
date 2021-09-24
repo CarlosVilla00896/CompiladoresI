@@ -53,7 +53,7 @@ namespace Compiler.Lexer.Tokens
         ReadLineKeyword,
         InKeyword,
         Identifier,
-        Constant,
+        IntConstant,
         FloatConstant,
         StringLiteral,
         Increase,

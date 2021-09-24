@@ -19,6 +19,7 @@ namespace Compiler.Parser
 
         public Node Parse()
         {
+            EnvironmentManager.PushContext();
             return Program();
         }
 
@@ -33,11 +34,13 @@ namespace Compiler.Parser
         {
             Statement statements = Statement.Null;
             Match(TokenType.OpenBrace);
+            EnvironmentManager.PushContext();
             while (this.lookAhead.TokenType != TokenType.CloseBrace)
             {
                 statements = Declarations();
             }
             Match(TokenType.CloseBrace);
+            EnvironmentManager.PopContext();
             return statements;
         }
 
@@ -89,6 +92,31 @@ namespace Compiler.Parser
             var statement1 = Block();
             return new MethodStatement(id, @params, statement1);
         }
+        
+        private Expression OptParams()
+        {
+            Expression expression;
+            switch (this.lookAhead.TokenType)
+            {
+                case TokenType.IntKeyword:
+                case TokenType.FloatKeyword:
+                case TokenType.DateTimeKeyword:
+                case TokenType.BoolKeyword:
+                    Match(VarType(this.lookAhead));
+                    expression = Expression();
+                    if (this.lookAhead.TokenType != TokenType.Comma)
+                    {
+                        return expression;
+                    }
+
+                    Match(TokenType.Comma);
+                    expression = new ArgumentExpression(this.lookAhead, expression as TypedExpression, OptParams() as TypedExpression);
+                    return expression;
+                default:
+                    break;
+            }
+            return null;
+        }
 
         //private Statement Declaration(Id id)
         //{
@@ -117,7 +145,7 @@ namespace Compiler.Parser
         //            id = new Id(this.lookAhead, Core.Type.Bool);
         //            Match(TokenType.Identifier);
         //            return DeclarationOptions( id );
-                    
+
         //        default:
         //            return Statement.Null;
         //    }
@@ -251,30 +279,6 @@ namespace Compiler.Parser
             }
         }
 
-        private Expression OptParams()
-        {
-            Expression expression;
-            switch (this.lookAhead.TokenType)
-            {
-                case TokenType.IntKeyword:
-                case TokenType.FloatKeyword:
-                case TokenType.DateTimeKeyword:
-                case TokenType.BoolKeyword:
-                    Match( VarType(this.lookAhead) );
-                    expression = Expression();
-                    if( this.lookAhead.TokenType != TokenType.Comma)
-                    {
-                       return expression;
-                    }
-
-                    Match(TokenType.Comma);
-                    expression = new ArgumentExpression(this.lookAhead, expression as TypedExpression, OptParams() as TypedExpression);
-                    return expression;
-                default:
-                    break;
-            }
-            return null;
-        }
 
         private Statement AssignStmt( Id id)
         {
@@ -304,7 +308,15 @@ namespace Compiler.Parser
             return new CallStatement(id, arguments);
         }
 
-        private Expression OptArguments()
+        public Expression OptArguments()
+        {
+            if (this.lookAhead.TokenType != TokenType.RightParens)
+            {
+                return Arguments();
+            }
+            return null; 
+        }
+        private Expression Arguments()
         {
             var expression = Expression();
             if( this.lookAhead.TokenType != TokenType.Comma)
@@ -315,6 +327,8 @@ namespace Compiler.Parser
             expression = new ArgumentExpression(this.lookAhead, expression as TypedExpression, OptArguments() as TypedExpression);
             return expression;
         }
+
+        
         private Statement ForStmt()
         {
             Match(TokenType.ForKeyword);
@@ -502,21 +516,20 @@ namespace Compiler.Parser
 
         private Expression Unary()
         {
-            var unaryOperator="";
             switch (this.lookAhead.TokenType)
             {
                 case TokenType.LogicalNegation:
-                    unaryOperator = "!";
+                    var token = this.lookAhead;
                     Match(TokenType.LogicalNegation);
-                    return Unary();
+                    return new UnaryOperator(token, Unary() as TypedExpression);
                 case TokenType.Increase:
-                    unaryOperator = "++";
+                    token = this.lookAhead;
                     Match(TokenType.Increase);
-                    return Unary();
+                    return new UnaryOperator(token, Unary() as TypedExpression);
                 case TokenType.Decrease:
-                    unaryOperator = "--";
+                    token = this.lookAhead;
                     Match(TokenType.Decrease);
-                    return Unary();
+                    return new UnaryOperator(token, Unary() as TypedExpression);
                 default:
                     return Primary();
                     //CallStmt();
@@ -532,9 +545,9 @@ namespace Compiler.Parser
                     var expression = Expression();
                     Match(TokenType.RightParens);
                     return expression;
-                case TokenType.Constant:
+                case TokenType.IntConstant:
                     var constant = new Constant(lookAhead, Core.Type.Int);
-                    Match(TokenType.Constant);
+                    Match(TokenType.IntConstant);
                     return constant;
                 case TokenType.TrueKeyword:
                     constant = new Constant(lookAhead, Core.Type.Bool);
