@@ -5,9 +5,9 @@ using System.Text;
 
 namespace Compiler.Core.Expressions
 {
-    public class LogicalExpression : BinaryOperator
+    public class LogicalExpression : TypedBinaryOperator
     {
-        public LogicalExpression(Token token, Expression leftExpression, Expression rightExpression) 
+        public LogicalExpression(Token token, TypedExpression leftExpression, TypedExpression rightExpression) 
             : base(token, leftExpression, rightExpression, null)
         {
         }

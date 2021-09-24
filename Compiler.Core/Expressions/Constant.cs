@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Compiler.Core.Expressions
 {
-    public class Constant : Expression
+    public class Constant : TypedExpression
     {
         public Constant(Token token, Type type) : base(token, type)
         {

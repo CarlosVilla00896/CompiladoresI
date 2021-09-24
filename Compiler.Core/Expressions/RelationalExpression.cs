@@ -5,9 +5,9 @@ using System.Text;
 
 namespace Compiler.Core.Expressions
 {
-    public class RelationalExpression : BinaryOperator
+    public class RelationalExpression : TypedBinaryOperator
     {
-        public RelationalExpression(Token token, Expression leftExpression, Expression rightExpression) 
+        public RelationalExpression(Token token, TypedExpression leftExpression, TypedExpression rightExpression) 
             : base(token, leftExpression, rightExpression, null)
         {
         }

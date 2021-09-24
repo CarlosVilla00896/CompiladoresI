@@ -5,11 +5,11 @@ using System.Text;
 
 namespace Compiler.Core.Expressions
 {
-    public class Operator : Expression
+    public class TypedExpression : Expression
     {
-        public Operator(Token token, Type type) : base(token, type)
+        public TypedExpression(Token token, Type type) 
+            : base(token, type)
         {
-
         }
     }
 }

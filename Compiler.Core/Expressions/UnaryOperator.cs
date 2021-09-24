@@ -5,9 +5,10 @@ using System.Text;
 
 namespace Compiler.Core.Expressions
 {
-    public class UnaryOperator : Operator
+    public class UnaryOperator : TypedExpression
     {
-        public UnaryOperator(Token token, Type type) : base(token, type)
+        public UnaryOperator(Token token, Type type) 
+            : base(token, type)
         {
         }
     }

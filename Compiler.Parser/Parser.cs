@@ -268,7 +268,7 @@ namespace Compiler.Parser
                     }
 
                     Match(TokenType.Comma);
-                    expression = new ArgumentExpression(this.lookAhead, expression, OptParams());
+                    expression = new ArgumentExpression(this.lookAhead, expression as TypedExpression, OptParams() as TypedExpression);
                     return expression;
                 default:
                     break;
@@ -312,7 +312,7 @@ namespace Compiler.Parser
                 return expression;
             }
             Match(TokenType.Comma);
-            expression = new ArgumentExpression(this.lookAhead, expression, OptArguments());
+            expression = new ArgumentExpression(this.lookAhead, expression as TypedExpression, OptArguments() as TypedExpression);
             return expression;
         }
         private Statement ForStmt()
@@ -385,7 +385,7 @@ namespace Compiler.Parser
             {
                 var token = this.lookAhead;
                 Match(TokenType.LogicalOr);
-                expression = new LogicalExpression(token, expression, And());
+                expression = new LogicalExpression(token, expression as TypedExpression, And() as TypedExpression);
             }
             return expression;
         }
@@ -397,7 +397,7 @@ namespace Compiler.Parser
             {
                 var token = this.lookAhead;
                 Match(TokenType.LogicalAnd);
-                expression = new LogicalExpression(token, expression, Equality());
+                expression = new LogicalExpression(token, expression as TypedExpression, Equality() as TypedExpression);
             }
             return expression;
         }
@@ -416,7 +416,7 @@ namespace Compiler.Parser
                 {
                     Match(TokenType.RelationalEqual);
                 }
-                expression = new RelationalExpression(token, expression, Relational());
+                expression = new RelationalExpression(token, expression as TypedExpression, Relational() as TypedExpression);
             }
 
             return expression;
@@ -448,7 +448,7 @@ namespace Compiler.Parser
                     default:
                         break;
                 }
-                expression = new RelationalExpression(token, expression, Term());
+                expression = new RelationalExpression(token, expression as TypedExpression, Term() as TypedExpression);
             }
             return expression;
         }
@@ -467,7 +467,7 @@ namespace Compiler.Parser
                 {
                     Match(TokenType.Plus);
                 }
-                expression = new ArithmeticOperator(token, expression, Factor());
+                expression = new ArithmeticOperator(token, expression as TypedExpression, Factor() as TypedExpression);
             }
             return expression;
         }
@@ -494,7 +494,7 @@ namespace Compiler.Parser
                     default:
                         break;
                 }
-                expression = new ArithmeticOperator(token, expression, Unary());
+                expression = new ArithmeticOperator(token, expression as TypedExpression, Unary() as TypedExpression);
             }
 
             return expression;

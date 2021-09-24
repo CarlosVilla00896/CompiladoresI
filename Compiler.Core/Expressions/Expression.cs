@@ -6,11 +6,11 @@ namespace Compiler.Core.Expressions
     public class Expression : Node
     {
         public Token Token { get; private set; }
-        public Type Type { get; private set; }
+        protected readonly Type type;
         public Expression(Token token, Type type)
         {
             Token = token;
-            Type = type;
+            this.type = type;
         }
         public Expression()
         {

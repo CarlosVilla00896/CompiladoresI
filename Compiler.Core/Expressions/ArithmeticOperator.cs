@@ -5,9 +5,9 @@ using System.Text;
 
 namespace Compiler.Core.Expressions
 {
-    public class ArithmeticOperator : BinaryOperator
+    public class ArithmeticOperator : TypedBinaryOperator
     {
-        public ArithmeticOperator(Token token, Expression leftExpression, Expression rightExpression)
+        public ArithmeticOperator(Token token, TypedExpression leftExpression, TypedExpression rightExpression)
             : base(token, leftExpression, rightExpression, null)
         {
         }
