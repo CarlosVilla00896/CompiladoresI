@@ -6,7 +6,7 @@
     int x = a - b;
     
     int c = b;
-    int c[] = new int [6];
+    int d[] = new int [6];
     c[1] = 45;
 
     /* float x = 7.45; */
@@ -30,23 +30,25 @@
             Console.WriteLine("Es Menor");
         }
     }
-    suma();
-    int Fibonacci()  
-    {  
-        if (counter <= len)  
+
+    
+    int Fibonacci(int z)  
+    { 
+        int counter = 2;
+        int y =1;
+        if (counter <= 10)  
         {  
             Console.WriteLine("{0} ");  
-            Fibonacci(b, a + b, counter+1, len);  
+            Fibonacci(b, a + b, counter+1, 4);  
         }
         else if( c!= a)
         {
-            int z = y;
+            z = y;
         }
         else{
             return a;
         }
-    } 
-
+    }
 
     
     

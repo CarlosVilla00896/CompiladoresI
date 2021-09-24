@@ -13,6 +13,10 @@ namespace Compiler.Core
 
     public class Symbol
     {
+        public SymbolType SymbolType { get; }
+        public Id Id { get; }
+        public dynamic Value { get; set; }
+        public Expression Attributes { get; }
         public Symbol(SymbolType symbolType, Id id, dynamic value)
         {
             SymbolType = symbolType;
@@ -26,10 +30,5 @@ namespace Compiler.Core
             SymbolType = symbolType;
             Id = id;
         }
-
-        public SymbolType SymbolType { get; }
-        public Id Id { get; }
-        public dynamic Value { get; set; }
-        public Expression Attributes { get; }
     }
 }
