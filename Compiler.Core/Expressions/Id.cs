@@ -1,5 +1,4 @@
-﻿using Compiler.Lexer.Tokens;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -9,6 +8,11 @@ namespace Compiler.Core.Expressions
     {
         public Id(Token token, Type type) : base(token, type)
         {
+        }
+
+        public override Type GetExpressionType()
+        {
+            return type;
         }
     }
 }

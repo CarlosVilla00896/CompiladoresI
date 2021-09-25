@@ -88,11 +88,7 @@
         "frameworks": {
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
-            "projectReferences": {
-              "C:\\Users\\carlo\\Github\\Compiler\\Compiler.Lexer\\Compiler.Lexer.csproj": {
-                "projectPath": "C:\\Users\\carlo\\Github\\Compiler\\Compiler.Lexer\\Compiler.Lexer.csproj"
-              }
-            }
+            "projectReferences": {}
           }
         },
         "warningProperties": {
@@ -146,7 +142,11 @@
         "frameworks": {
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\carlo\\Github\\Compiler\\Compiler.Core\\Compiler.Core.csproj": {
+                "projectPath": "C:\\Users\\carlo\\Github\\Compiler\\Compiler.Core\\Compiler.Core.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

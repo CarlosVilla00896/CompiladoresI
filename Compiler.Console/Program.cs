@@ -1,6 +1,6 @@
 ﻿using Compiler.Lexer;
-using Compiler.Lexer.Tokens;
 using Compiler.Parser;
+using Compiler.Core;
 using System;
 using System.IO;
 

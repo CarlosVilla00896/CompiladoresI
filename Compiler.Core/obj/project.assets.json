@@ -1,30 +1,11 @@
 {
   "version": 3,
   "targets": {
-    ".NETCoreApp,Version=v3.1": {
-      "Compiler.Lexer/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v3.1",
-        "compile": {
-          "bin/placeholder/Compiler.Lexer.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Compiler.Lexer.dll": {}
-        }
-      }
-    }
+    ".NETCoreApp,Version=v3.1": {}
   },
-  "libraries": {
-    "Compiler.Lexer/1.0.0": {
-      "type": "project",
-      "path": "../Compiler.Lexer/Compiler.Lexer.csproj",
-      "msbuildProject": "../Compiler.Lexer/Compiler.Lexer.csproj"
-    }
-  },
+  "libraries": {},
   "projectFileDependencyGroups": {
-    ".NETCoreApp,Version=v3.1": [
-      "Compiler.Lexer >= 1.0.0"
-    ]
+    ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
     "C:\\Users\\carlo\\.nuget\\packages\\": {}
@@ -52,11 +33,7 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
-          "projectReferences": {
-            "C:\\Users\\carlo\\Github\\Compiler\\Compiler.Lexer\\Compiler.Lexer.csproj": {
-              "projectPath": "C:\\Users\\carlo\\Github\\Compiler\\Compiler.Lexer\\Compiler.Lexer.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {

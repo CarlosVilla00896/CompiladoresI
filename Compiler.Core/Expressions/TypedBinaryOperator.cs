@@ -1,11 +1,10 @@
-﻿using Compiler.Lexer.Tokens;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Compiler.Core.Expressions
 {
-    public class TypedBinaryOperator : TypedExpression
+    public abstract class TypedBinaryOperator : TypedExpression
     {
         public TypedExpression LeftExpression { get; }
         public TypedExpression RightExpression { get; }
@@ -15,5 +14,6 @@ namespace Compiler.Core.Expressions
             LeftExpression = leftExpression;
             RightExpression = rightExpression;
         }
+
     }
 }

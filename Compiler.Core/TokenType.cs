@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Compiler.Lexer.Tokens
+namespace Compiler.Core
 {
     public enum TokenType
     {
@@ -32,13 +32,16 @@ namespace Compiler.Lexer.Tokens
         LogicalAnd,
         LogicalOr,
         LogicalNegation,
+        Increase,
+        Decrease,
+        Dollar,
         ClassKeyword,
         IfKeyword,
         ElseKeyword,
         IntKeyword,
         FloatKeyword,
-        TrueKeyword,
-        FalseKeyword,
+        TrueConstant,
+        FalseConstant,
         BoolKeyword,
         BasicType,
         DateTimeKeyword,
@@ -57,8 +60,6 @@ namespace Compiler.Lexer.Tokens
         FloatConstant,
         BoolConstant,
         StringLiteral,
-        Increase,
-        Decrease,
         EOF
     }
 }

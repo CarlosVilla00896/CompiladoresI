@@ -1,5 +1,4 @@
-﻿using Compiler.Lexer.Tokens;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -7,9 +6,24 @@ namespace Compiler.Core.Expressions
 {
     public class LogicalExpression : TypedBinaryOperator
     {
+        private readonly Dictionary<(Type, Type), Type> _typeRules;
         public LogicalExpression(Token token, TypedExpression leftExpression, TypedExpression rightExpression) 
             : base(token, leftExpression, rightExpression, null)
         {
+            _typeRules = new Dictionary<(Type, Type), Type>
+            {
+                { (Type.Bool, Type.Bool), Type.Bool },
+            };
+        }
+
+        public override Type GetExpressionType()
+        {
+            if (_typeRules.TryGetValue((LeftExpression.GetExpressionType(), RightExpression.GetExpressionType()), out var resultType))
+            {
+                return resultType;
+            }
+
+            throw new ApplicationException($"Cannot perform logical operation on {LeftExpression.GetExpressionType()}, {RightExpression.GetExpressionType()}");
         }
     }
 }

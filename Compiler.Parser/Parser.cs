@@ -1,14 +1,13 @@
-﻿using Compiler.Lexer;
-using Compiler.Lexer.Tokens;
-using Compiler.Core;
+﻿using Compiler.Core;
 using System;
 using Compiler.Core.Statements;
 using Compiler.Core.Expressions;
 using Type = Compiler.Core.Type;
+using Compiler.Core.Interfaces;
 
 namespace Compiler.Parser
 {
-    public class Parser
+    public class Parser : IParser
     {
         private readonly IScanner scanner;
         private Token lookAhead;
@@ -18,7 +17,7 @@ namespace Compiler.Parser
             this.Move();
         }
 
-        public Node Parse()
+        public Statement Parse()
         {
             EnvironmentManager.PushContext();
             return Program();
@@ -268,7 +267,7 @@ namespace Compiler.Parser
                         {
                             return AssignStmt(symbol.Id);
                         }
-                        return CallStmt(symbol.Id);
+                        return CallStmt(symbol);
                     }
 
                 case TokenType.IfKeyword:
@@ -281,7 +280,7 @@ namespace Compiler.Parser
 
                         if (this.lookAhead.TokenType != TokenType.ElseKeyword)
                         {
-                            return new IfStatement(expression, statement1);
+                            return new IfStatement(expression as TypedExpression, statement1);
                         }
 
                         Match(TokenType.ElseKeyword);
@@ -330,14 +329,14 @@ namespace Compiler.Parser
             return new AssignationStatement(id, value1, value2);
         }
 
-        private Statement CallStmt(Id id)
+        private Statement CallStmt(Symbol symbol)
         {
            
             Match(TokenType.LeftParens);
             var arguments = OptArguments();
             Match(TokenType.RightParens);
             Match(TokenType.SemiColon);
-            return new CallStatement(id, arguments);
+            return new CallStatement(symbol.Id, arguments, symbol.Attributes);
         }
 
         public Expression OptArguments()
@@ -588,13 +587,13 @@ namespace Compiler.Parser
                     constant = new Constant(lookAhead, Type.Float);
                     Match(TokenType.FloatConstant);
                     return constant;
-                case TokenType.TrueKeyword:
+                case TokenType.TrueConstant:
                     constant = new Constant(lookAhead, Type.Bool);
-                    Match(TokenType.TrueKeyword);
+                    Match(TokenType.TrueConstant);
                     return constant;
-                case TokenType.FalseKeyword:
+                case TokenType.FalseConstant:
                     constant = new Constant(lookAhead, Type.Bool);
-                    Match(TokenType.FalseKeyword);
+                    Match(TokenType.FalseConstant);
                     return constant;
                 case TokenType.StringLiteral:
                     constant = new Constant(lookAhead, Type.String);

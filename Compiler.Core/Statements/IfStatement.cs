@@ -1,19 +1,26 @@
 ﻿using Compiler.Core.Expressions;
+using Compiler.Core.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Compiler.Core.Statements
 {
-    public class IfStatement : Statement
+    public class IfStatement : Statement, ISemanticValidation
     {
-        public Expression Expression { get; }
+        public TypedExpression Expression { get; }
         public Statement Statement { get; }
 
-        public IfStatement( Expression expression, Statement statement)
+        public IfStatement(TypedExpression expression, Statement statement)
         {
             Expression = expression;
             Statement = statement;
+        }
+
+        public void ValidateSemantic()
+        {
+            if (Expression.GetExpressionType() != Type.Bool)
+            {
+                throw new ApplicationException("A boolean is required in ifs");
+            }
         }
     }
 }

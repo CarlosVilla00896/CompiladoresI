@@ -9,10 +9,14 @@ namespace Compiler.Core.Statements
     {
         public Id Id { get; }
         public Expression Arguments { get; }
-        public CallStatement(Id id, Expression arguments)
+        public Expression Attributes { get; }
+
+        public CallStatement(Id id, Expression arguments, Expression attributes)
         {
             Id = id;
             Arguments = arguments;
+            Attributes = attributes;
+            Attributes = attributes;
         }
     }
 }

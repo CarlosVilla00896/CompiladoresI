@@ -1,4 +1,5 @@
-﻿using Compiler.Lexer.Tokens;
+﻿using Compiler.Core.Interfaces;
+using Compiler.Core;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -26,12 +27,12 @@ namespace Compiler.Lexer
                 { "for", TokenType.ForKeyword },
                 { "foreach", TokenType.ForeachKeyword },
                 { "class", TokenType.ClassKeyword },
-                { "true", TokenType.TrueKeyword },
-                { "false", TokenType.FalseKeyword },
+                { "true", TokenType.TrueConstant },
+                { "false", TokenType.FalseConstant },
                 { "Console", TokenType.ConsoleKeyword },
                 { "WriteLine", TokenType.WriteLineKeyword},
                 { "ReadLine", TokenType.ReadLineKeyword},
-                { "in", TokenType.ReadLineKeyword},
+                { "in", TokenType.InKeyword},
                 { "type", TokenType.TypeKeyWord},
                 { "new", TokenType.NewKeyword },
             };
@@ -468,6 +469,37 @@ namespace Compiler.Lexer
                                 Line = input.Position.Line,
                                 Lexeme = lexeme.ToString()
                             };
+
+                        //case '$':
+                        //    {
+                        //        lexeme.Append(currentChar);
+                        //        var nextChar = PeekNextChar();
+                        //        if (nextChar == '\"')
+                        //        {
+                        //            lexeme.Append(nextChar);
+                        //            currentChar = GetNextChar(); //si dejo esto, creo que incluye las comillas al lexema
+                        //            while (currentChar != '\"')
+                        //            {
+                        //                lexeme.Append(currentChar);
+                        //                currentChar = GetNextChar();
+                        //            }
+                        //            lexeme.Append(currentChar);
+                        //            return new Token
+                        //            {
+                        //                TokenType = TokenType.StringLiteral,
+                        //                Column = input.Position.Column,
+                        //                Line = input.Position.Line,
+                        //                Lexeme = lexeme.ToString(),
+                        //            };
+                        //        }
+                        //        return new Token
+                        //        {
+                        //            TokenType = TokenType.Dollar,
+                        //            Column = input.Position.Column,
+                        //            Line = input.Position.Line,
+                        //            Lexeme = lexeme.ToString()
+                        //        };
+                        //    }
 
                         case '!':
                             {
