@@ -1,56 +1,29 @@
 ﻿class Main{
     
-    DateTime date = new DateTime(2021, 10, 25);
-	int a =  6 + 4;
+    
+    int Fibonacci(int z, int j, int c)  
+    { 
+        int counter = 2;
+        int a =  6 + 4;
     int b = 6;
     int x = a - b;
     
     int c = b;
-    int d[] = new int [6];
-    c[1] = 45;
-
-    /* float x = 7.45; */
-
-    /* hola loco como estas **/
-
-    if( a == true){
-        Console.WriteLine("hola");    
-    } else {
-        Console.WriteLine("No hola");
-    }
-
-    c = ++c;
-    a = "Hola como esta";
-
-
-    while( (a != 5) || (c > b) ){
-        if(a>b){
-            Console.WriteLine("Es Mayor");
-        }else{
-            Console.WriteLine("Es Menor");
-        }
-    }
-
-    
-    int Fibonacci(int z)  
-    { 
-        int counter = 2;
         int y =1;
         if (counter <= 10)  
         {  
             Console.WriteLine("{0} ");  
-            Fibonacci(b, a + b, counter+1, 4);  
+            Fibonacci(b, 4 + 4);  
         }
         else if( c!= a)
         {
             z = y;
         }
         else{
+            j = z;
             return a;
         }
     }
-
-    
     
 }
 

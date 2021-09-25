@@ -14,10 +14,10 @@ namespace Compiler.Core
             Lexeme = Lexeme;
             TokenType = tokenType;
         }
-        public static Type Int => new Type("int", TokenType.IntKeyword);
-        public static Type Float => new Type("float", TokenType.FloatKeyword);
-        public static Type Bool => new Type("bool", TokenType.BoolKeyword);
-        public static Type DateTime => new Type("DateTime", TokenType.DateTimeKeyword);
-        public static Type String => new Type("string", TokenType.StringLiteral);
+        public static Type Int => new Type("int", TokenType.BasicType);
+        public static Type Float => new Type("float", TokenType.BasicType);
+        public static Type Bool => new Type("bool", TokenType.BasicType);
+        public static Type DateTime => new Type("DateTime", TokenType.BasicType);
+        public static Type String => new Type("string", TokenType.BasicType);
     }
 }

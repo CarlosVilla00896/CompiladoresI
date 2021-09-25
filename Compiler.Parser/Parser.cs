@@ -53,25 +53,25 @@ namespace Compiler.Parser
                     Match(VarType(this.lookAhead));
                     Token token = this.lookAhead;
                     Match(TokenType.Identifier);
-                    var id = new Id(this.lookAhead, Type.Int);
+                    var id = new Id(token, Type.Int);
                     return TypedDeclarations(token, id);
                 case TokenType.FloatKeyword:
                     Match(VarType(this.lookAhead));
                     token = this.lookAhead;
                     Match(TokenType.Identifier);
-                    id = new Id(this.lookAhead, Type.Float);
+                    id = new Id(token, Type.Float);
                     return TypedDeclarations(token, id);
                 case TokenType.BoolKeyword:
                     Match(VarType(this.lookAhead));
                     token = this.lookAhead;
                     Match(TokenType.Identifier);
-                    id = new Id(this.lookAhead, Type.Bool);
+                    id = new Id(token, Type.Bool);
                     return TypedDeclarations(token, id);
                 case TokenType.DateTimeKeyword:
                     Match(VarType(this.lookAhead));
                     token = this.lookAhead;
                     Match(TokenType.Identifier);
-                    id = new Id(this.lookAhead, Type.DateTime);
+                    id = new Id(token, Type.DateTime);
                     return TypedDeclarations(token, id);
                 default:
                     break;
@@ -124,9 +124,9 @@ namespace Compiler.Parser
                     var token = this.lookAhead;
                     Match(TokenType.Identifier);
                     var id = new Id(token, Type.Int);
+                    EnvironmentManager.AddVariable(token.Lexeme, id);
                     if (this.lookAhead.TokenType != TokenType.Comma)
                     {
-                        EnvironmentManager.AddVariable(token.Lexeme, id);
                         return id;
                     }
 
@@ -179,39 +179,6 @@ namespace Compiler.Parser
             }
             return null;
         }
-
-        //private Statement Declaration(Id id)
-        //{
-        //    switch (this.lookAhead.TokenType)
-        //    {
-        //        case TokenType.IntKeyword:
-        //            Match(TokenType.IntKeyword);
-        //            id = new Id(this.lookAhead, Core.Type.Int);
-        //            Match(TokenType.Identifier);
-        //            return DeclarationOptions( id );
-
-        //        case TokenType.FloatKeyword:
-        //            Match(TokenType.FloatKeyword);
-        //            id = new Id(this.lookAhead, Core.Type.Float);
-        //            Match(TokenType.Identifier);
-        //            return DeclarationOptions( id );
-
-        //        case TokenType.DateTimeKeyword:
-        //            Match(TokenType.DateTimeKeyword);
-        //            id = new Id(this.lookAhead, Core.Type.DateTime);
-        //            Match(TokenType.Identifier);
-        //            return DeclarationOptions( id );
-
-        //        case TokenType.BoolKeyword:
-        //            Match(TokenType.BoolKeyword);
-        //            id = new Id(this.lookAhead, Core.Type.Bool);
-        //            Match(TokenType.Identifier);
-        //            return DeclarationOptions( id );
-
-        //        default:
-        //            return Statement.Null;
-        //    }
-        //}
 
         private Statement DeclarationOptions(Token token, Id id)
         {
@@ -274,7 +241,7 @@ namespace Compiler.Parser
                 case TokenType.BoolKeyword:
                     return TokenType.BoolKeyword;
                 default:
-                    throw new ApplicationException($"Invalid type {token.ToString()}");
+                    throw new ApplicationException($"Invalid type {token.Lexeme.ToString()}");
             }
         }
 
@@ -389,7 +356,7 @@ namespace Compiler.Parser
                 return expression;
             }
             Match(TokenType.Comma);
-            expression = new ArgumentExpression(this.lookAhead, expression as TypedExpression, OptArguments() as TypedExpression);
+            expression = new ArgumentExpression(this.lookAhead, expression as TypedExpression, Arguments() as TypedExpression);
             return expression;
         }
 
@@ -614,19 +581,23 @@ namespace Compiler.Parser
                     Match(TokenType.RightParens);
                     return expression;
                 case TokenType.IntConstant:
-                    var constant = new Constant(lookAhead, Core.Type.Int);
+                    var constant = new Constant(lookAhead, Type.Int);
                     Match(TokenType.IntConstant);
                     return constant;
+                case TokenType.FloatConstant:
+                    constant = new Constant(lookAhead, Type.Float);
+                    Match(TokenType.FloatConstant);
+                    return constant;
                 case TokenType.TrueKeyword:
-                    constant = new Constant(lookAhead, Core.Type.Bool);
+                    constant = new Constant(lookAhead, Type.Bool);
                     Match(TokenType.TrueKeyword);
                     return constant;
                 case TokenType.FalseKeyword:
-                    constant = new Constant(lookAhead, Core.Type.Bool);
+                    constant = new Constant(lookAhead, Type.Bool);
                     Match(TokenType.FalseKeyword);
                     return constant;
                 case TokenType.StringLiteral:
-                    constant = new Constant(lookAhead, Core.Type.String);
+                    constant = new Constant(lookAhead, Type.String);
                     Match(TokenType.StringLiteral);
                     return constant;
                 default:
