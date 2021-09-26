@@ -11,7 +11,7 @@ namespace Compiler.Core.Statements
         public TypedExpression Value1 { get; }
         public TypedExpression Value2 { get;  }
         public TypedExpression Value3 { get; }
-        public string AssignmentType { get; } = "";
+        public string AssignmentType { get; }
 
         //Asignacion normal
         public AssignationStatement(Id id, TypedExpression value, string assignmentType)
@@ -39,7 +39,7 @@ namespace Compiler.Core.Statements
             Value3 = day;
             AssignmentType = assignmentType;
         }
-
+          
         public override void ValidateSemantic()
         {
             switch (AssignmentType)
@@ -47,31 +47,31 @@ namespace Compiler.Core.Statements
                 case "normal":
                     if (Id.GetExpressionType() != Value1.GetExpressionType())
                     {
-                        throw new ApplicationException($"Type {Value1.GetExpressionType()} is not assignable to {Id.GetExpressionType()}");
+                        throw new ApplicationException($"Type {Value1.GetExpressionType()} is not assignable to {Id.GetExpressionType()}. Line {Value1.Token.Line} column {Value1.Token.Column}");
                     }
                     break;
                 case "array":
                     if (Value1.GetExpressionType() != Type.Int)
                     {
-                        throw new ApplicationException($"int type expected, but received {Value1.GetExpressionType()}");
+                        throw new ApplicationException($"int type expected, but received {Value1.GetExpressionType()}. Line {Value1.Token.Line} column {Value1.Token.Column}");
                     }
                     if (Id.GetExpressionType() != Value2.GetExpressionType())
                     {
-                        throw new ApplicationException($"Type {Value2.GetExpressionType()} is not assignable to {Id.GetExpressionType()}");
+                        throw new ApplicationException($"Type {Value2.GetExpressionType()} is not assignable to {Id.GetExpressionType()}. Line {Id.Token.Line} column {Id.Token.Column}");
                     }
                     break;
                 case "date":
                     if (Value1.GetExpressionType() != Type.Int)
                     {
-                        throw new ApplicationException($"int type expected, but received {Value1.GetExpressionType()}");
+                        throw new ApplicationException($"int type expected, but received {Value1.GetExpressionType()}. Line {Value1.Token.Line} column {Value1.Token.Column}");
                     }
                     if (Value2.GetExpressionType() != Type.Int)
                     {
-                        throw new ApplicationException($"int type expected, but received {Value2.GetExpressionType()}");
+                        throw new ApplicationException($"int type expected, but received {Value2.GetExpressionType()}. Line {Value2.Token.Line} column {Value2.Token.Column}");
                     }
                     if (Value3.GetExpressionType() != Type.Int)
                     {
-                        throw new ApplicationException($"int type expected, but received {Value2.GetExpressionType()}");
+                        throw new ApplicationException($"int type expected, but received {Value3.GetExpressionType()}. Line {Value3.Token.Line} column {Value3.Token.Column}");
                     }
                     break;
                 default:

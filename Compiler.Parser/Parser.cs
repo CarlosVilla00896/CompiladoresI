@@ -315,20 +315,40 @@ namespace Compiler.Parser
 
         private Statement AssignStmt( Id id)
         {
-            Expression value1, value2;
-            if (this.lookAhead.TokenType == TokenType.Equal) {
-                Match(TokenType.Equal);
-                value1 = Expression();
-                Match(TokenType.SemiColon);
-                return new AssignationStatement(id, value1 as TypedExpression, "normal");
+            Expression value1, value2, value3;
+            switch (this.lookAhead.TokenType)
+            {
+                case TokenType.Equal:
+                    Match(TokenType.Equal);
+                    if (this.lookAhead.TokenType == TokenType.NewKeyword)
+                    {
+                        Match(TokenType.NewKeyword);
+                        Match(TokenType.DateTimeKeyword);
+                        Match(TokenType.LeftParens);
+                        value1 = Expression();
+                        Match(TokenType.Comma);
+                        value2 = Expression();
+                        Match(TokenType.Comma);
+                        value3 = Expression();
+                        Match(TokenType.RightParens);
+                        Match(TokenType.SemiColon);
+                        return new AssignationStatement(id, value1 as TypedExpression, value2 as TypedExpression, value3 as TypedExpression, "date");
+                    }
+                    value1 = Expression();
+                    Match(TokenType.SemiColon);
+                    return new AssignationStatement(id, value1 as TypedExpression, "normal");
+                default:
+                    Match(TokenType.LeftBracket);
+                    value1 = Expression();
+                    Match(TokenType.RightBracket);
+                    Match(TokenType.Equal);
+                    value2 = Expression();
+                    Match(TokenType.SemiColon);
+                    return new AssignationStatement(id, value1 as TypedExpression, value2 as TypedExpression, "array");
             }
-            Match(TokenType.LeftBracket);
-            value1 = Expression();
-            Match(TokenType.RightBracket);
-            Match(TokenType.Equal);
-            value2 = Expression();
-            Match(TokenType.SemiColon);
-            return new AssignationStatement(id, value1 as TypedExpression, value2 as TypedExpression, "array");
+            
+           
+
         }
 
         private Statement CallStmt(Symbol symbol)

@@ -19,7 +19,7 @@ namespace Compiler.Core.Statements
         {
             if (Expression.GetExpressionType() != Type.Bool)
             {
-                throw new ApplicationException("A boolean is required in while");
+                throw new ApplicationException($"A boolean is required in while. Line {Expression.Token.Line}, column {Expression.Token.Column}");
             }
         }
 

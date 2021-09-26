@@ -1,7 +1,7 @@
 ﻿class Main{
     
     DateTime date = new DateTime(2021, 10, 25);
-	int a =  6 + 4;
+	int a =  6 + true;
     int b = 6;
     int x = a - b;
     

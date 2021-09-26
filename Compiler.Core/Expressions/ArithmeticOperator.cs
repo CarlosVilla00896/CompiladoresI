@@ -31,7 +31,7 @@ namespace Compiler.Core.Expressions
                 return resultType;
             }
 
-            throw new ApplicationException($"Cannot perform arithmetic operation on {LeftExpression.GetExpressionType()}, {RightExpression.GetExpressionType()}");
+            throw new ApplicationException($"Cannot perform arithmetic operation between {LeftExpression.GetExpressionType()} and {RightExpression.GetExpressionType()}. Line {Token.Line}, column {Token.Column}");
         }
     }
 }

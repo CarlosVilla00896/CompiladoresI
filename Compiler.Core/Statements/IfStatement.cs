@@ -18,7 +18,7 @@ namespace Compiler.Core.Statements
         {
             if (Expression.GetExpressionType() != Type.Bool)
             {
-                throw new ApplicationException("A boolean is required in ifs");
+                throw new ApplicationException($"A boolean is required in if statement. Line {Expression.Token.Line}, column {Expression.Token.Column}");
             }
         }
         public override string Generate()

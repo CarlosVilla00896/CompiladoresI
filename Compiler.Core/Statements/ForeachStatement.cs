@@ -21,7 +21,7 @@ namespace Compiler.Core.Statements
         {
             if(ElementId.GetExpressionType() != ArrayId.GetExpressionType())
             {
-                throw new ApplicationException($"Element type {ElementId.GetExpressionType()} must be the same as array type {ArrayId.GetExpressionType()}");
+                throw new ApplicationException($"Element type {ElementId.GetExpressionType()} must be the same as array type {ArrayId.GetExpressionType()}. Line {ElementId.Token.Line} column {ElementId.Token.Column}");
             }
         }
 

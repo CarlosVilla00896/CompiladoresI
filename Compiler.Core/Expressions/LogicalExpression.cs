@@ -23,7 +23,7 @@ namespace Compiler.Core.Expressions
                 return resultType;
             }
 
-            throw new ApplicationException($"Cannot perform logical operation on {LeftExpression.GetExpressionType()}, {RightExpression.GetExpressionType()}");
+            throw new ApplicationException($"Cannot perform logical operation between {LeftExpression.GetExpressionType()} and {RightExpression.GetExpressionType()}. Line {Token.Line}, column {Token.Column}");
         }
     }
 }
