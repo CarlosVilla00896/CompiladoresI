@@ -15,8 +15,8 @@ namespace Compiler.Core.Expressions
                 { (Type.Float, Type.Float), Type.Float },
                 { (Type.Int, Type.Int), Type.Int },
                 { (Type.String, Type.String), Type.String },
-                { (Type.Bool, Type.Bool), Type.Bool },
-                { (Type.DateTime, Type.DateTime), Type.DateTime },
+                { (Type.Bool, Type.Bool), Type.Bool  },
+                { (Type.DateTime, Type.DateTime), Type.DateTime  },
                 { (Type.Float, Type.Int), Type.Float },
                 { (Type.Int, Type.Float), Type.Float },
                 { (Type.String, Type.Int), Type.String  },
@@ -26,10 +26,11 @@ namespace Compiler.Core.Expressions
 
         public override Type GetExpressionType()
         {
-            if(_typeRules.TryGetValue((LeftExpression.GetExpressionType(), RightExpression.GetExpressionType()), out var resultType))
+            if (_typeRules.TryGetValue((LeftExpression.GetExpressionType(), RightExpression.GetExpressionType()), out var resultType))
             {
                 return resultType;
             }
+
             throw new ApplicationException($"Cannot perform arithmetic operation on {LeftExpression.GetExpressionType()}, {RightExpression.GetExpressionType()}");
         }
     }

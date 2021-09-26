@@ -18,5 +18,37 @@ namespace Compiler.Core.Statements
             Attributes = attributes;
             Attributes = attributes;
         }
+
+        public override void ValidateSemantic()
+        {
+            ValidateArguments(Attributes, Arguments);
+        }
+        private void ValidateArguments(Expression attributes, Expression arguments)
+        {
+            if (attributes == null && arguments == null)
+            {
+                return;
+            }
+
+            if (attributes is BinaryOperator binary && binary.RightExpression == null && (arguments is BinaryOperator))
+            {
+                throw new ApplicationException("Incorrect amount of arguments supplied");
+            }
+
+            if (attributes is BinaryOperator attr && arguments is BinaryOperator arg)
+            {
+                ValidateArguments(attr.LeftExpression, arg.LeftExpression);
+                ValidateArguments(attr.RightExpression, arg.RightExpression);
+            }
+            else if (attributes is TypedExpression typedAttr && arguments is TypedExpression typedArg && typedAttr.GetExpressionType() != typedArg.GetExpressionType())
+            {
+                throw new ApplicationException($"Expected {typedAttr.GetExpressionType()} but received {typedArg.GetExpressionType()}");
+            }
+
+        }
+        public override string Generate()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -29,7 +29,7 @@ namespace Compiler.Core.Expressions
                 return resultType;
             }
 
-            throw new ApplicationException($"Cannot perform relational operation on {LeftExpression.GetExpressionType()}, {RightExpression.GetExpressionType()}");
+            throw new ApplicationException($"Cannot perform relational operation between {LeftExpression.GetExpressionType()} and {RightExpression.GetExpressionType()}");
         }
     }
 }

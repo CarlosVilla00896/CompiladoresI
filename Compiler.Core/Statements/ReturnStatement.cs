@@ -7,11 +7,20 @@ namespace Compiler.Core.Statements
 {
     public class ReturnStatement : Statement
     {
-        public Expression Expression { get; }
-        public ReturnStatement(Expression expression)
+        public TypedExpression Expression { get; }
+        public ReturnStatement(TypedExpression expression)
         {
             Expression = expression;
         }
 
+        public override void ValidateSemantic()
+        {
+            return;
+        }
+
+        public override string Generate()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

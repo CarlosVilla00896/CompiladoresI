@@ -19,20 +19,22 @@ namespace Compiler.Parser
 
         public Statement Parse()
         {
-            EnvironmentManager.PushContext();
             return Program();
         }
 
         private Statement Program()
         {
+            EnvironmentManager.PushContext();
             Match(TokenType.ClassKeyword);
             Match(TokenType.Identifier);
-            return Block();
+            var block = Block();
+            block.ValidateSemantic();
+            return block;
         }
 
         private Statement Block()
         {
-            Statement statements = Statement.Null;
+            Statement statements = null;
             Match(TokenType.OpenBrace);
             EnvironmentManager.PushContext();
             while (this.lookAhead.TokenType != TokenType.CloseBrace)
@@ -87,7 +89,7 @@ namespace Compiler.Parser
             {
                 return Stmts();
             }
-                return Statement.Null;
+                return null;
         }
 
         private Statement TypedDeclarations(Token token, Id id)
@@ -196,7 +198,7 @@ namespace Compiler.Parser
                     Match(TokenType.RightBracket);
                     Match(TokenType.SemiColon);
                     EnvironmentManager.AddVariable(token.Lexeme, id);
-                    return new DeclarationStatement(id, value1);
+                    return new DeclarationStatement(id, value1 as TypedExpression, "array");
 
                 case TokenType.Equal:
                     Match(TokenType.Equal);
@@ -213,12 +215,12 @@ namespace Compiler.Parser
                         Match(TokenType.RightParens);
                         Match(TokenType.SemiColon);
                         EnvironmentManager.AddVariable(token.Lexeme, id);
-                        return new DeclarationStatement(id, value1, value2, value3);
+                        return new DeclarationStatement(id, value1 as TypedExpression, value2 as TypedExpression, value3 as TypedExpression, "date");
                     }
                     value1 = Expression();
                     Match(TokenType.SemiColon);
                     EnvironmentManager.AddVariable(token.Lexeme, id);
-                    return new DeclarationStatement(id, value1);
+                    return new DeclarationStatement(id, value1 as TypedExpression, "normal");
                 default:
                     Match(TokenType.SemiColon);
                     EnvironmentManager.AddVariable(token.Lexeme, id);
@@ -248,7 +250,7 @@ namespace Compiler.Parser
         {
             //if (this.lookAhead.TokenType == TokenType.CloseBrace)
             //{
-            //    return Statement.Null;
+            //    return null;
             //}
             return new SequenceStatement(Stmt(), Declarations());
         }
@@ -285,7 +287,7 @@ namespace Compiler.Parser
 
                         Match(TokenType.ElseKeyword);
                         statement2 = Stmt();
-                        return new ElseStatement(expression, statement1, statement2);
+                        return new ElseStatement(expression as TypedExpression, statement1, statement2);
                     }
 
                 //case TokenType.ForKeyword:
@@ -304,7 +306,7 @@ namespace Compiler.Parser
                     Match(TokenType.ReturnKeyword);
                     expression = Expression();
                     Match(TokenType.SemiColon);
-                    return new ReturnStatement(expression);
+                    return new ReturnStatement(expression as TypedExpression);
                 default:
                     return Block();
             }
@@ -318,7 +320,7 @@ namespace Compiler.Parser
                 Match(TokenType.Equal);
                 value1 = Expression();
                 Match(TokenType.SemiColon);
-                return new AssignationStatement(id, value1);
+                return new AssignationStatement(id, value1 as TypedExpression, "normal");
             }
             Match(TokenType.LeftBracket);
             value1 = Expression();
@@ -326,7 +328,7 @@ namespace Compiler.Parser
             Match(TokenType.Equal);
             value2 = Expression();
             Match(TokenType.SemiColon);
-            return new AssignationStatement(id, value1, value2);
+            return new AssignationStatement(id, value1 as TypedExpression, value2 as TypedExpression, "array");
         }
 
         private Statement CallStmt(Symbol symbol)
@@ -376,9 +378,11 @@ namespace Compiler.Parser
 
         private Statement ForeachStmt()
         {
+            
             Match(TokenType.ForeachKeyword);
             Match(TokenType.LeftParens);
-            Match(TokenType.IntKeyword);
+            var varType = this.lookAhead.TokenType;
+            Match(VarType(this.lookAhead));
             var token = this.lookAhead;
             Match(TokenType.Identifier);
             Match(TokenType.InKeyword);
@@ -386,6 +390,23 @@ namespace Compiler.Parser
             Match(TokenType.Identifier);
             Match(TokenType.RightParens);
             var elementId = new Id(token, Type.Int);
+            switch (varType)
+            {
+                case TokenType.IntKeyword:
+                    elementId = new Id(token, Type.Int);
+                    break;
+                case TokenType.FloatKeyword:
+                    elementId = new Id(token, Type.Float);
+                    break;
+                case TokenType.BoolKeyword:
+                    elementId = new Id(token, Type.Bool);
+                    break;
+                case TokenType.DateTimeKeyword:
+                    elementId = new Id(token, Type.DateTime);
+                    break;
+                default:
+                    break;
+            }
             EnvironmentManager.AddVariable(token.Lexeme, elementId);
             var arrayId = symbol.Id;
             var statement = Block();
@@ -399,7 +420,7 @@ namespace Compiler.Parser
             var expression = Expression();
             Match(TokenType.RightParens);
             var statement = Block();
-            return new WhileStatement(expression, statement);
+            return new WhileStatement(expression as TypedExpression, statement);
         }
 
         private Statement ConsoleStmt()

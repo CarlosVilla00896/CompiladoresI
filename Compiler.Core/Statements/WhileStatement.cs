@@ -7,12 +7,25 @@ namespace Compiler.Core.Statements
 {
     public class WhileStatement : Statement
     {
-        public Expression Expression { get; }
+        public TypedExpression Expression { get; }
         public Statement Statement { get; }
-        public WhileStatement(Expression expression, Statement statement)
+        public WhileStatement(TypedExpression expression, Statement statement)
         {
             Expression = expression;
             Statement = statement;
+        }
+
+        public override void ValidateSemantic()
+        {
+            if (Expression.GetExpressionType() != Type.Bool)
+            {
+                throw new ApplicationException("A boolean is required in while");
+            }
+        }
+
+        public override string Generate()
+        {
+            throw new NotImplementedException();
         }
     }
 }

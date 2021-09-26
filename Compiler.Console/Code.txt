@@ -1,25 +1,23 @@
 ﻿class Main{
     
     
-     DateTime date = new DateTime(2021, 10, 25);
+    DateTime date = 7.4;
 	int a =  6 + 4;
     int b = 6;
+    bool falso = false;
 
-    int c[] = new int [6];
+    float c[] = new int [6];
     c[1] = 45;
 
     float x = 7.45;
 
     /* hola loco como estas **/
 
-    if( a == true){
+    if( falso == true){
         Console.WriteLine("hola");    
-    } else {
-        Console.WriteLine("No hola");
     }
 
-    c = ++c;
-    a = "Hola como esta";
+    a = 7;
 
 
     while( (a != 5) || (c > b) && ( b <= 10 ) ){

@@ -14,5 +14,16 @@ namespace Compiler.Core.Statements
             FirstStatement = firstStatement;
             NextStatement = nextStatement;
         }
+
+        public override void ValidateSemantic()
+        {
+            FirstStatement?.ValidateSemantic();
+            NextStatement?.ValidateSemantic();
+        }
+
+        public override string Generate()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

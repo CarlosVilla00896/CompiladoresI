@@ -17,5 +17,15 @@ namespace Compiler.Core.Statements
         {
 
         }
+
+        public override void ValidateSemantic()
+        {
+            return;
+        }
+
+        public override string Generate()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

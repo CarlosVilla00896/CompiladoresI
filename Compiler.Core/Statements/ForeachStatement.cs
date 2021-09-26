@@ -16,5 +16,18 @@ namespace Compiler.Core.Statements
             ArrayId = arrayId;
             Block = block;
         }
+
+        public override void ValidateSemantic()
+        {
+            if(ElementId.GetExpressionType() != ArrayId.GetExpressionType())
+            {
+                throw new ApplicationException($"Element type {ElementId.GetExpressionType()} must be the same as array type {ArrayId.GetExpressionType()}");
+            }
+        }
+
+        public override string Generate()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

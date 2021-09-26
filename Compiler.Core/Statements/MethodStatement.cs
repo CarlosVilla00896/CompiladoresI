@@ -15,6 +15,16 @@ namespace Compiler.Core.Statements
             Id = id;
             Parameters = parameters;
             Block = block;
-        }    
+        }
+
+        public override void ValidateSemantic()
+        {
+            return;
+        }
+
+        public override string Generate()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

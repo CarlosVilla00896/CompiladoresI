@@ -7,17 +7,20 @@ namespace Compiler.Core
     public class Type : IEquatable<Type>
     {
         public string Lexeme { get; private set; }
+
         public TokenType TokenType { get; private set; }
         public Type(string lexeme, TokenType tokenType)
         {
-            Lexeme = Lexeme;
+            Lexeme = lexeme;
             TokenType = tokenType;
         }
+
         public static Type Int => new Type("int", TokenType.BasicType);
         public static Type Float => new Type("float", TokenType.BasicType);
         public static Type Bool => new Type("bool", TokenType.BasicType);
-        public static Type DateTime => new Type("DateTime", TokenType.BasicType);
         public static Type String => new Type("string", TokenType.BasicType);
+        public static Type DateTime => new Type("DateTime", TokenType.BasicType);
+
 
         public bool Equals(Type other)
         {
