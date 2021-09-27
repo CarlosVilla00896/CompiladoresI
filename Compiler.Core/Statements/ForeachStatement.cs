@@ -23,6 +23,7 @@ namespace Compiler.Core.Statements
             {
                 throw new ApplicationException($"Element type {ElementId.GetExpressionType()} must be the same as array type {ArrayId.GetExpressionType()}. Line {ElementId.Token.Line} column {ElementId.Token.Column}");
             }
+            Block?.ValidateSemantic();
         }
 
         public override string Generate()

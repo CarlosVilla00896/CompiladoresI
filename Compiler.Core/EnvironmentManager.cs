@@ -39,7 +39,7 @@ namespace Compiler.Core
                     return symbol;
                 }
             }
-            throw new ApplicationException($"Symbol {lexeme} doesn't exist in current context");
+            throw new ApplicationException($"Symbol {lexeme} doesn't exist in current context.");
         }
 
         public static Symbol GetSymbolForEvaluation(string lexeme)

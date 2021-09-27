@@ -16,12 +16,11 @@ namespace Compiler.Core.Statements
             Id = id;
             Arguments = arguments;
             Attributes = attributes;
-            Attributes = attributes;
         }
 
         public override void ValidateSemantic()
         {
-            ValidateArguments(Attributes, Arguments);
+            //ValidateArguments(Attributes, Arguments);
         }
         private void ValidateArguments(Expression attributes, Expression arguments)
         {
@@ -32,7 +31,7 @@ namespace Compiler.Core.Statements
 
             if (attributes is BinaryOperator binary && binary.RightExpression == null && (arguments is BinaryOperator))
             {
-                throw new ApplicationException("Incorrect amount of arguments supplied");
+                throw new ApplicationException($"Incorrect amount of arguments supplied. Line {arguments.Token.Line}, column {arguments.Token.Column}");
             }
 
             if (attributes is BinaryOperator attr && arguments is BinaryOperator arg)
@@ -42,7 +41,7 @@ namespace Compiler.Core.Statements
             }
             else if (attributes is TypedExpression typedAttr && arguments is TypedExpression typedArg && typedAttr.GetExpressionType() != typedArg.GetExpressionType())
             {
-                throw new ApplicationException($"Expected {typedAttr.GetExpressionType()} but received {typedArg.GetExpressionType()}");
+                throw new ApplicationException($"Expected {typedAttr.GetExpressionType()} but received {typedArg.GetExpressionType()}.  Line {arguments.Token.Line}, column {arguments.Token.Column}");
             }
 
         }

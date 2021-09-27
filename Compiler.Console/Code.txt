@@ -1,11 +1,9 @@
 ﻿class Main{
-    
-    
     DateTime date = new DateTime(7, 5, 4);
 	float a =  6 + 7.4;
     int b = 6;
     bool falso = false;
-
+    b = ++b;
     date = new DateTime(2020, 40, 100);
 
     float c[] = new int [6];
@@ -16,36 +14,36 @@
     /* hola loco como estas **/
 
     if( b <= x){
-        Console.WriteLine("hola");    
+        Console.WriteLine($"hola");
     }else if (falso == true){
-        Console.WriteLine("no hola");
+        Console.WriteLine($"no hola");
     }
 
 
 
     while( (a != 5) || (c > b) && ( b <= 10 ) ){
         if(a>b){
-            Console.WriteLine("Es Mayor");
+            Console.WriteLine($"Es Mayor");
         }else{
-            Console.WriteLine("Es Menor");
+            Console.WriteLine($"Es Menor");
         }
     }
 
     foreach(float elemet in x)
     {
-        Console.WriteLine("{c}");
+        Console.WriteLine($"{c}");
     }
 
     int Fibonacci(int j, int y)  
     {  
         if (b <= 10)  
         {  
-            Console.WriteLine("{0} ");  
-            Fibonacci(b, "hola");  
+            Console.WriteLine($"{0} ");  
+            Fibonacci(b, j);  
         }
         else if( c!= a)
         {
-            int z = y;
+            j = y;
         }
         else{
             return a;

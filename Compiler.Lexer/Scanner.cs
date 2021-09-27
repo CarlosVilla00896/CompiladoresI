@@ -470,36 +470,14 @@ namespace Compiler.Lexer
                                 Lexeme = lexeme.ToString()
                             };
 
-                        //case '$':
-                        //    {
-                        //        lexeme.Append(currentChar);
-                        //        var nextChar = PeekNextChar();
-                        //        if (nextChar == '\"')
-                        //        {
-                        //            lexeme.Append(nextChar);
-                        //            currentChar = GetNextChar(); //si dejo esto, creo que incluye las comillas al lexema
-                        //            while (currentChar != '\"')
-                        //            {
-                        //                lexeme.Append(currentChar);
-                        //                currentChar = GetNextChar();
-                        //            }
-                        //            lexeme.Append(currentChar);
-                        //            return new Token
-                        //            {
-                        //                TokenType = TokenType.StringLiteral,
-                        //                Column = input.Position.Column,
-                        //                Line = input.Position.Line,
-                        //                Lexeme = lexeme.ToString(),
-                        //            };
-                        //        }
-                        //        return new Token
-                        //        {
-                        //            TokenType = TokenType.Dollar,
-                        //            Column = input.Position.Column,
-                        //            Line = input.Position.Line,
-                        //            Lexeme = lexeme.ToString()
-                        //        };
-                        //    }
+                        case '$':
+                                return new Token
+                                {
+                                    TokenType = TokenType.Dollar,
+                                    Column = input.Position.Column,
+                                    Line = input.Position.Line,
+                                    Lexeme = lexeme.ToString()
+                                };
 
                         case '!':
                             {

@@ -19,7 +19,8 @@ namespace Compiler.Core.Statements
 
         public override void ValidateSemantic()
         {
-            return;
+            Block?.ValidateSemantic();
+            
         }
 
         public override string Generate()

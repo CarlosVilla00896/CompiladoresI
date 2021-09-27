@@ -20,6 +20,7 @@ namespace Compiler.Core.Statements
             {
                 throw new ApplicationException($"A boolean is required in if statement. Line {Expression.Token.Line}, column {Expression.Token.Column}");
             }
+            Statement?.ValidateSemantic();
         }
         public override string Generate()
         {

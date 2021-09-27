@@ -451,6 +451,7 @@ namespace Compiler.Parser
             {
                 Match(TokenType.WriteLineKeyword);
                 Match(TokenType.LeftParens);
+                Match(TokenType.Dollar);
                 var expression = Expression();
                 Match(TokenType.RightParens);
                 Match(TokenType.SemiColon);
