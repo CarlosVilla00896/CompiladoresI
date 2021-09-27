@@ -24,32 +24,42 @@
 
 
 
-    while( (a != 5) || (a > b) && ( b <= 10 ) ){
+    while(  (a > b)  ){
         if(a>b){
             Console.WriteLine($"Es Mayor");
         }else{
             Console.WriteLine($"Es Menor");
         }
+        a = --a;
+        b = ++b;
     }
 
-    foreach(float elemet in c)
+    foreach(float element in c)
     {
-        Console.WriteLine($"{c}");
+        Console.WriteLine($"${element}");
     }
 
-     int Fib(int n1)
-     {
-      /* if ( (n1 == 1) || (number == 2) ) */
-        if (n1 <=2)
-        {
-             return 1;
-        }else
-        {
-            int fib = Fib( n1 - 1 ) + Fib( n1 - 2 );
-            return fib;
+    /*
+    int Suma(int value1, int value2) 
+    {
+        return a + b;
+    }
+    */
+    int Fibonacci(int y, int counter)  
+    {  
+        if (counter <= 10)  
+        {  
+            Console.WriteLine($"{0} ");  
+            Fibonacci(b, 10);  
         }
-          
-     }
+        else if( c!= a)
+        {
+            int z = y;
+        }
+        else{
+            return a;
+        }
+    } 
     
 }
 

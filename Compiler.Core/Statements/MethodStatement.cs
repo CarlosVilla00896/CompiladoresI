@@ -28,7 +28,7 @@ namespace Compiler.Core.Statements
             var code = "";
             var innerCode = InnerCodeGenerateCode(Parameters);
             code += $"function {Id.Generate()}({innerCode}){{{Environment.NewLine}";
-            code += $"{Block.Generate()}{{{Environment.NewLine}}}{Environment.NewLine}";
+            code += $"{Block.Generate()}{Environment.NewLine}}}{Environment.NewLine}";
             return code;
         }
 

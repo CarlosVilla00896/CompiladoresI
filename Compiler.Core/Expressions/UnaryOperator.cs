@@ -16,7 +16,7 @@ namespace Compiler.Core.Expressions
 
         public override string Generate()
         {
-            return $"{Expression.Generate()}{Token.Lexeme}";
+            return $"{Token.Lexeme}{Expression.Generate()}";
         }
 
         public override Type GetExpressionType()
