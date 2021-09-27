@@ -5,7 +5,6 @@
     bool falso = false;
     b = ++b;
     date = new DateTime(2021, 5, 18);
-
     float c[] = new int [b];
 
     c[0] = 8.7;

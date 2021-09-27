@@ -42,9 +42,16 @@ namespace Compiler.Core.Statements
             switch (AssignmentType)
             {
                 case "normal":
-                    if (Id.GetExpressionType() != Value1.GetExpressionType())
+                    if (Id.GetExpressionType() == Type.Float)
                     {
-                        throw new ApplicationException($"Type {Value1.GetExpressionType()} is not assignable to {Id.GetExpressionType()}. Line {Id.Token.Line} column {Id.Token.Column}");
+                        if ((Value1.GetExpressionType() != Type.Float) && (Value1.GetExpressionType() != Type.Int))
+                        {
+                            throw new ApplicationException($"Type {Value1.GetExpressionType()} is not assignable to {Id.GetExpressionType()}. Line {Value1.Token.Line} column {Value1.Token.Column}");
+                        }
+                    }
+                    else if (Id.GetExpressionType() != Value1.GetExpressionType())
+                    {
+                        throw new ApplicationException($"Type {Value1.GetExpressionType()} is not assignable to {Id.GetExpressionType()}. Line {Value1.Token.Line} column {Value1.Token.Column}");
                     }
                     break;
                 case "array":

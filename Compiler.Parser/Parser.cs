@@ -5,7 +5,6 @@ using Compiler.Core.Expressions;
 using Type = Compiler.Core.Type;
 using Compiler.Core.Interfaces;
 using System.IO;
-using System.Threading.Tasks;
 
 namespace Compiler.Parser
 {
