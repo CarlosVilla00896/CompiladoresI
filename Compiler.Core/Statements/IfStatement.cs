@@ -24,7 +24,11 @@ namespace Compiler.Core.Statements
         }
         public override string Generate()
         {
-            throw new NotImplementedException();
+            var code = String.Empty;
+            //var code = GetCodeInit(tabs);
+            code += $"if({Expression.Generate()}){{{Environment.NewLine}";
+            code += $"{Statement.Generate()}{Environment.NewLine}}}{Environment.NewLine}";
+            return code;
         }
     }
 }

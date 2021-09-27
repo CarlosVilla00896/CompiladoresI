@@ -28,7 +28,10 @@ namespace Compiler.Core.Statements
 
         public override string Generate()
         {
-            throw new NotImplementedException();
+            var code = String.Empty;
+            code += $"{ArrayId.Token.Lexeme}.forEach( {ElementId.Token.Lexeme} => {Environment.NewLine}";
+            code += $"{Block.Generate()}{Environment.NewLine} );{Environment.NewLine}";
+            return code;
         }
     }
 }

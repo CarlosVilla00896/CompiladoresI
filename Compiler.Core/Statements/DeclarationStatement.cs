@@ -74,7 +74,23 @@ namespace Compiler.Core.Statements
 
         public override string Generate()
         {
-            throw new NotImplementedException();
+            var code = "";
+            switch (AssignmentType)
+            {
+                case "normal":
+                    code += $"var {Id.Generate()} = {Value1.Generate()};{Environment.NewLine}";
+                    break;
+                case "array":
+                    code += $"var {Id.Generate()} = new Array({Value1.Generate()});{Environment.NewLine}";
+                    break;
+                case "date":
+                    code += $"var {Id.Generate()} = new Date ({Value1.Generate()}, {Value2.Generate()}, {Value3.Generate()});{Environment.NewLine}";
+                    break;
+                default:
+                    code += $"var {Id.Generate()}; {Environment.NewLine}";
+                    break;
+            }
+            return code;
         }
     }
 }

@@ -23,7 +23,10 @@ namespace Compiler.Core.Statements
 
         public override string Generate()
         {
-            throw new NotImplementedException();
+
+            var code = FirstStatement?.Generate();
+            code += NextStatement?.Generate();
+            return code;
         }
     }
 }

@@ -29,6 +29,7 @@ namespace Compiler.Parser
             Match(TokenType.Identifier);
             var block = Block();
             block.ValidateSemantic();
+            var code = block.Generate();
             return block;
         }
 

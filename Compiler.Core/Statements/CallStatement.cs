@@ -47,7 +47,25 @@ namespace Compiler.Core.Statements
         }
         public override string Generate()
         {
-            throw new NotImplementedException();
+            var code = "";
+            var innerCode = InnerCodeGenerateCode(Arguments);
+            code += $"{Id.Generate()}({innerCode});{Environment.NewLine}";
+            return code;
+        }
+
+        private string InnerCodeGenerateCode(Expression arguments)
+        {
+            var code = string.Empty;
+            if (arguments is BinaryOperator binary)
+            {
+                code += $"{InnerCodeGenerateCode(binary.LeftExpression)}, ";
+                code += $"{InnerCodeGenerateCode(binary.RightExpression)}";
+            }
+            else
+            {
+                code += arguments.Generate();
+            }
+            return code;
         }
     }
 }

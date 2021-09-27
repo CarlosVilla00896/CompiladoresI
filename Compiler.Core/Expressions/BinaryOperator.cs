@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Compiler.Core.Expressions
 {
-    public class BinaryOperator : Expression
+    public abstract class BinaryOperator : Expression
     {
         public TypedExpression LeftExpression { get; }
         public TypedExpression RightExpression { get; }

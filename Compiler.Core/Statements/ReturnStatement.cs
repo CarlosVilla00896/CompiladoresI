@@ -20,7 +20,7 @@ namespace Compiler.Core.Statements
 
         public override string Generate()
         {
-            throw new NotImplementedException();
+            return $"return {Expression.Generate()};{Environment.NewLine}";
         }
     }
 }

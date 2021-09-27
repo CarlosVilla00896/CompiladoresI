@@ -29,7 +29,16 @@ namespace Compiler.Core.Statements
 
         public override string Generate()
         {
-            throw new NotImplementedException();
+            var code = String.Empty;
+            code += $"if({Expression.Generate()}){{ {Environment.NewLine}";
+            code += $"{TrueStatement.Generate()}{Environment.NewLine}";
+            //for (int i = 0; i < tabs; i++)
+            //{
+            //    code += "\t";
+            //}
+            code += $"}} else {{{Environment.NewLine}";
+            code += $"{FalseStatement.Generate()}{Environment.NewLine}}}{Environment.NewLine}";
+            return code;
         }
     }
 }

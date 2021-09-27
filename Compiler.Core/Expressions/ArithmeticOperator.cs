@@ -24,6 +24,17 @@ namespace Compiler.Core.Expressions
             };
         }
 
+        public override string Generate()
+        {
+            if (LeftExpression.GetExpressionType() == Type.String &&
+                RightExpression.GetExpressionType() != Type.String)
+            {
+                return $"{LeftExpression.Generate()} {Token.Lexeme} str({RightExpression.Generate()})";
+            }
+
+            return $"{LeftExpression.Generate()} {Token.Lexeme} {RightExpression.Generate()}";
+        }
+
         public override Type GetExpressionType()
         {
             if (_typeRules.TryGetValue((LeftExpression.GetExpressionType(), RightExpression.GetExpressionType()), out var resultType))

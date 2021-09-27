@@ -25,7 +25,26 @@ namespace Compiler.Core.Statements
 
         public override string Generate()
         {
-            throw new NotImplementedException();
+            var code = "";
+            var innerCode = InnerCodeGenerateCode(Parameters);
+            code += $"function {Id.Generate()}({innerCode}){{{Environment.NewLine}";
+            code += $"{Block.Generate()}{{{Environment.NewLine}}}{Environment.NewLine}";
+            return code;
+        }
+
+        private string InnerCodeGenerateCode(Expression arguments)
+        {
+            var code = string.Empty;
+            if (arguments is BinaryOperator binary)
+            {
+                code += $"var {InnerCodeGenerateCode(binary.LeftExpression)}, " ;
+                code += $"var {InnerCodeGenerateCode(binary.RightExpression)}";
+            }
+            else
+            {
+                code += arguments.Generate();
+            }
+            return code;
         }
     }
 }

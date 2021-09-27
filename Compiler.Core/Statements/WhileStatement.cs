@@ -26,7 +26,10 @@ namespace Compiler.Core.Statements
 
         public override string Generate()
         {
-            throw new NotImplementedException();
+            var code = "";
+            code += $"while({Expression.Generate()}){{ {Environment.NewLine}";
+            code += $"{Statement.Generate()}{Environment.NewLine}}}{Environment.NewLine}";
+            return code;
         }
     }
 }

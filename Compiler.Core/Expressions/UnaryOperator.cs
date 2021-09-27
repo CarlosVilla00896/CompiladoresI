@@ -14,6 +14,11 @@ namespace Compiler.Core.Expressions
 
         public TypedExpression Expression { get; }
 
+        public override string Generate()
+        {
+            return $"{Expression.Generate()}{Token.Lexeme}";
+        }
+
         public override Type GetExpressionType()
         {
             switch (Token.TokenType)
