@@ -430,6 +430,7 @@ namespace Compiler.Lexer
                                 var nextChar = PeekNextChar();
                                 if (nextChar == '&')
                                 {
+                                    lexeme.Append(nextChar);
                                     GetNextChar();
                                     return new Token
                                     {
@@ -448,6 +449,7 @@ namespace Compiler.Lexer
                                 var nextChar = PeekNextChar();
                                 if (nextChar == '|')
                                 {
+                                    lexeme.Append(nextChar);
                                     GetNextChar();
                                     return new Token
                                     {

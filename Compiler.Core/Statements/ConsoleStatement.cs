@@ -8,14 +8,17 @@ namespace Compiler.Core.Statements
     public class ConsoleStatement : Statement
     {
         public Expression Expression { get; }
-        public ConsoleStatement(Expression expression)
+        public bool IsWriteLine { get; }
+
+        public ConsoleStatement(Expression expression, bool isWriteLine)
         {
             Expression = expression;
+            IsWriteLine = isWriteLine;
         }
 
-        public ConsoleStatement()
+        public ConsoleStatement(bool isWriteLine)
         {
-
+            IsWriteLine = isWriteLine;
         }
 
         public override void ValidateSemantic()
@@ -25,7 +28,11 @@ namespace Compiler.Core.Statements
 
         public override string Generate()
         {
-            return $"console.log(${Expression.Generate()});{Environment.NewLine}";
+            if( IsWriteLine)
+            {
+                return $"console.log(${Expression.Generate()});{Environment.NewLine}";
+            }
+            return $"prompt();{Environment.NewLine}";
         }
     }
 }

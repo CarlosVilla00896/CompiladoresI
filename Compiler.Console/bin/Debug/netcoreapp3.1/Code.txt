@@ -16,7 +16,7 @@
     if( b <= x){
         Console.WriteLine($"hola");
     }else if (falso == true){
-        Console.WriteLine($"no hola");
+        Console.ReadLine();
     }
 
 

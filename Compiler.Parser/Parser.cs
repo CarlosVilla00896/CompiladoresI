@@ -456,13 +456,13 @@ namespace Compiler.Parser
                 var expression = Expression();
                 Match(TokenType.RightParens);
                 Match(TokenType.SemiColon);
-                return new ConsoleStatement(expression);
+                return new ConsoleStatement(expression, true);
             }
             Match(TokenType.ReadLineKeyword);
             Match(TokenType.LeftParens);
             Match(TokenType.RightParens);
             Match(TokenType.SemiColon);
-            return new ConsoleStatement();
+            return new ConsoleStatement(false);
         }
         private Expression Expression()
         {
