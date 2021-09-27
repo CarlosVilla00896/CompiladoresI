@@ -32,6 +32,7 @@ namespace Compiler.Core.Statements
             {
                 var code = $"console.log({Expression.Generate()});{Environment.NewLine}";
                 code = code.Replace('\"', '`');
+                code = code.Replace("{", "${");
                 return code;
             }
             return $"prompt();{Environment.NewLine}";

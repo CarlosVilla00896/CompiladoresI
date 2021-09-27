@@ -5,7 +5,6 @@
     bool falso = false;
     b = ++b;
     date = new DateTime(2021, 5, 18);
-    a = 6;
     float c[] = new int [b];
 
     c[0] = 8.7;
@@ -36,7 +35,7 @@
 
     foreach(float element in c)
     {
-        Console.WriteLine($"${element}");
+        Console.WriteLine($"{element}");
     }
 
     /*

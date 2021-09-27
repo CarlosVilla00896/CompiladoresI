@@ -35,7 +35,7 @@
 
     foreach(float element in c)
     {
-        Console.WriteLine($"${element}");
+        Console.WriteLine($"{element}");
     }
 
     /*

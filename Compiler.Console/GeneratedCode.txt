@@ -4,7 +4,6 @@ var b = 2;
 var falso = false;
 b = ++b;
 date = new Date (2021, 5, 18);
-a = 6;
 var c = new Array(b);
 c[0] = 8.7;
 c[1] = 17.5;
@@ -38,7 +37,7 @@ console.log(`${element}`);
  );
 function Fibonacci(y, counter){
 if((counter <= 10)){ 
-console.log(`{0} `);
+console.log(`${0} `);
 Fibonacci(b, 10);
 
 } else {
