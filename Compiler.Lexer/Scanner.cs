@@ -507,6 +507,13 @@ namespace Compiler.Lexer
                                 };
                             }
 
+                            return new Token
+                            {
+                                TokenType = TokenType.Dollar,
+                                Column = input.Position.Column,
+                                Line = input.Position.Line,
+                                Lexeme = lexeme.ToString()
+                            };
 
                         case '\0':
                             return new Token

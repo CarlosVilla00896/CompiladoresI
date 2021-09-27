@@ -27,10 +27,12 @@ namespace Compiler.Core.Statements
         }
 
         public override string Generate()
-        {
+        {   
             if( IsWriteLine)
             {
-                return $"console.log(${Expression.Generate()});{Environment.NewLine}";
+                var code = $"console.log({Expression.Generate()});{Environment.NewLine}";
+                code = code.Replace('\"', '`');
+                return code;
             }
             return $"prompt();{Environment.NewLine}";
         }

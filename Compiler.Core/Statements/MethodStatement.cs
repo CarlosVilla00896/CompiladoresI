@@ -37,8 +37,8 @@ namespace Compiler.Core.Statements
             var code = string.Empty;
             if (arguments is BinaryOperator binary)
             {
-                code += $"var {InnerCodeGenerateCode(binary.LeftExpression)}, " ;
-                code += $"var {InnerCodeGenerateCode(binary.RightExpression)}";
+                code += $"{InnerCodeGenerateCode(binary.LeftExpression)}, " ;
+                code += $"{InnerCodeGenerateCode(binary.RightExpression)}";
             }
             else
             {
