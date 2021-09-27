@@ -4,6 +4,8 @@ using Compiler.Core.Statements;
 using Compiler.Core.Expressions;
 using Type = Compiler.Core.Type;
 using Compiler.Core.Interfaces;
+using System.IO;
+using System.Threading.Tasks;
 
 namespace Compiler.Parser
 {
@@ -29,10 +31,14 @@ namespace Compiler.Parser
             Match(TokenType.Identifier);
             var block = Block();
             block.ValidateSemantic();
-            var code = block.Generate();
+            string code = block.Generate();
+            WriteToFile(code);
             return block;
         }
-
+        public void WriteToFile(string code)
+        {
+            File.WriteAllText("C:\\Users\\carlo\\Github\\Compiler\\Compiler.Console\\GeneratedCode.txt", code);
+        }
         private Statement Block()
         {
             Statement statements = null;

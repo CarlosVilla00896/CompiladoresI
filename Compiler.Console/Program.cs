@@ -14,16 +14,8 @@ namespace Compiler.Console
             var input = new Input(code);
             var scanner = new Scanner(input);
             var parser = new Parser.Parser(scanner);
-            //var engine = new CompilerEngine(parser);
-            //engine.Run();
             var ast = parser.Parse();
             System.Console.WriteLine("Success!!");
-            //Token token;
-            //do
-            //{
-            //    token = scanner.GetNextToken();
-            //    System.Console.WriteLine(token.ToString());
-            //} while (token.TokenType != TokenType.EOF);
         }
     }
 }

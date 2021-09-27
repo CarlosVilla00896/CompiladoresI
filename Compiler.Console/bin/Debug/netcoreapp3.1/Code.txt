@@ -12,7 +12,7 @@
     c[1] = 17.5;
     c[2] = 21.5;
 
-    float x = 7.45;
+    float x = 10.45;
 
     /* hola loco como estas **/
 
@@ -26,7 +26,7 @@
 
     while(  (a > b)  ){
         if(a>b){
-            Console.WriteLine($"Es Mayor");
+            Console.WriteLine($"Es Mayor" + 5);
         }else{
             Console.WriteLine($"Es Menor");
         }
@@ -45,6 +45,7 @@
         return a + b;
     }
     */
+
     int Fibonacci(int y, int counter)  
     {  
         if (counter <= 10)  
