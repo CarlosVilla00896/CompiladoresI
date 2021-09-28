@@ -1,54 +1,10 @@
-var date = new Date (2020, 5, 18);
-var a = 6 + 7.4;
-var b = 2;
-var falso = false;
-b = ++b;
-date = new Date (2021, 5, 18);
-var c = new Array(b);
+var c = new Array(3);
 c[0] = 8.7;
 c[1] = 17.5;
 c[2] = 21.5;
-var x = 10.45;
-if((b <= x)){ 
-console.log(`hola`);
-
-} else {
-if((falso == true)){
-prompt();
-
-}
-
-}
-while((a > b)){ 
-if((a > b)){ 
-console.log(`Es Mayor` + 5);
-
-} else {
-console.log(`Es Menor`);
-
-}
-a = --a;
-b = ++b;
-
-}
+var counter = 0;
 c.forEach( element => 
-console.log(`${element}`);
+counter = ++counter;
 
  );
-function Fibonacci(y, counter){
-if((counter <= 10)){ 
-console.log(`${0} `);
-Fibonacci(b, 10);
-
-} else {
-if((c != a)){ 
-var z = y;
-
-} else {
-return a;
-
-}
-
-}
-
-}
+console.log(`${counter}`);

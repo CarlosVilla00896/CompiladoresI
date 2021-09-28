@@ -627,6 +627,11 @@ namespace Compiler.Parser
                     var expression = Expression();
                     Match(TokenType.RightParens);
                     return expression;
+                case TokenType.LeftBracket:
+                    Match(TokenType.LeftBracket);
+                    expression = Expression();
+                    Match(TokenType.RightBracket);
+                    return expression;
                 case TokenType.IntConstant:
                     var constant = new Constant(lookAhead, Type.Int);
                     Match(TokenType.IntConstant);
@@ -650,6 +655,10 @@ namespace Compiler.Parser
                 default:
                     var symbol = EnvironmentManager.GetSymbol(this.lookAhead.Lexeme);
                     Match(TokenType.Identifier);
+                    if( this.lookAhead.TokenType == TokenType.LeftBracket)
+                    {
+                        return Expression();
+                    }
                     return symbol.Id;
             }
         }

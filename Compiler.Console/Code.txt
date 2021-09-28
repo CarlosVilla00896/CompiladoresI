@@ -1,66 +1,15 @@
-﻿class Main{
-    DateTime date = new DateTime(2020, 5, 18);
-	float a =  6 + 7.4;
-    int b = 2;
-    bool falso = false;
-    b = ++b;
-    date = new DateTime(2021, 5, 18);
-    float c[] = new int [b];
+﻿class Main {
+
+float c[] = new int [3];
 
     c[0] = 8.7;
     c[1] = 17.5;
     c[2] = 21.5;
-
-    float x = 10.45;
-
-    /* hola loco como estas **/
-
-    if( b <= x){
-        Console.WriteLine($"hola");
-    }else if (falso == true){
-        Console.ReadLine();
-    }
-
-
-
-    while(  (a > b)  ){
-        if(a>b){
-            Console.WriteLine($"Es Mayor" + 5);
-        }else{
-            Console.WriteLine($"Es Menor");
-        }
-        a = --a;
-        b = ++b;
-    }
-
+    int counter = 0;
     foreach(float element in c)
     {
-        Console.WriteLine($"{element}");
+        counter = ++counter;
     }
+    Console.WriteLine($"{counter}");
 
-    /*
-    int Suma(int value1, int value2) 
-    {
-        return a + b;
-    }
-    */
-
-    int Fibonacci(int y, int counter)  
-    {  
-        if (counter <= 10)  
-        {  
-            Console.WriteLine($"{0} ");  
-            Fibonacci(b, 10);  
-        }
-        else if( c!= a)
-        {
-            int z = y;
-        }
-        else{
-            return a;
-        }
-    } 
-    
 }
-
-

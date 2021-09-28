@@ -1,0 +1,39 @@
+﻿
+Ejercicio 1 por partes:
+
+class Program
+{
+
+    /* deje solo dos parametros */
+    int QuickSort(int left, int right)
+
+    {
+        int arr [] = new int (4); /* el parametro arr lo puse aca para que no tronara */
+
+      if (left < right)
+
+      {
+
+        QuicSort(arr, left); /* Le cambie el nombre de Partition a Quicksort y no lo asigno a pivot */
+
+        if (pivot > 1)
+
+        {
+
+          QuickSort(arr, left); /* solo lo llama con dos argumentos, quite 1 */
+
+        }
+
+        if (pivot + 1 < right)
+
+        {
+
+          QuickSort(arr, pivot + 1); /* solo lo llama con dos argumentos, quite 1 */
+
+        }
+
+      }
+
+
+
+}
